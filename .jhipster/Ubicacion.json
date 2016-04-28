@@ -12,7 +12,7 @@
       "relationshipType": "many-to-many",
       "relationshipName": "cervesa",
       "otherEntityName": "cervesa",
-      "otherEntityField": "cervesaId",
+      "otherEntityField": "id",
       "ownerSide": true
     }
   ],
