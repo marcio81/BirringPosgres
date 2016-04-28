@@ -1,0 +1,79 @@
+
+entity Ubicacion {
+	ubiName String,
+    direccion String,
+    longitud Float,
+    latitud Float
+}
+
+entity Cervesa {
+	cervesaName String,
+    tipo String,
+    fabricante String,
+    pais String,
+    graduacion Double,
+    foto Blob
+    
+}
+
+entity Precio {
+	precio Double
+}
+
+entity Evaluar {
+	evaluacion Integer
+}
+
+entity Comentario {
+	comentario String,
+	
+}
+
+/**
+ * The Employee entity.
+ */
+entity Player {
+	
+	
+}
+
+
+
+enum Language {
+    FRENCH, ENGLISH, SPANISH
+}
+
+relationship OneToMany {
+	Ubicacion{precio} to Precio
+}
+
+
+relationship ManyToMany {
+	Ubicacion{cervesa(cervesaId)} to Cervesa{ubicacion}
+}
+
+relationship OneToMany {
+	Cervesa{precio} to Precio
+}
+relationship OneToMany {
+	Cervesa{evaluar} to Evaluar
+}
+relationship OneToMany {
+	Cervesa{comentario} to Comentario
+}
+relationship OneToMany {
+	User{precio} to Precio
+}
+relationship OneToMany {
+	User{evaluar} to Evaluar
+}
+relationship OneToMany {
+	User{comentario} to Comentario
+}
+
+paginate  Evaluar, Comentario, Precio, Cervesa, Ubicacion with infinite-scroll
+
+
+
+
+	

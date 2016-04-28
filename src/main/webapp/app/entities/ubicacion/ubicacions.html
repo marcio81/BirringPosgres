@@ -1,0 +1,62 @@
+<div>
+    <h2 translate="jhipsterApp.ubicacion.home.title">Ubicacions</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="ubicacion.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  translate="jhipsterApp.ubicacion.home.createLabel">
+                        Create new Ubicacion
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.reset()">
+                    <th jh-sort-by="id"><span translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="ubiName"><span translate="jhipsterApp.ubicacion.ubiName">UbiName</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="direccion"><span translate="jhipsterApp.ubicacion.direccion">Direccion</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="longitud"><span translate="jhipsterApp.ubicacion.longitud">Longitud</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="latitud"><span translate="jhipsterApp.ubicacion.latitud">Latitud</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody infinite-scroll="vm.loadPage(vm.page + 1)" infinite-scroll-disabled="vm.page >= vm.links['last']">
+                <tr ng-repeat="ubicacion in vm.ubicacions track by ubicacion.id">
+                    <td><a ui-sref="ubicacion-detail({id:ubicacion.id})">{{ubicacion.id}}</a></td>
+                    <td>{{ubicacion.ubiName}}</td>
+                    <td>{{ubicacion.direccion}}</td>
+                    <td>{{ubicacion.longitud}}</td>
+                    <td>{{ubicacion.latitud}}</td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="ubicacion-detail({id:ubicacion.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="ubicacion.edit({id:ubicacion.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="ubicacion.delete({id:ubicacion.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

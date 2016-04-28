@@ -1,0 +1,71 @@
+{
+  "relationships": [
+    {
+      "relationshipId": 1,
+      "relationshipType": "one-to-many",
+      "relationshipName": "precio",
+      "otherEntityName": "precio",
+      "otherEntityRelationshipName": "cervesa"
+    },
+    {
+      "relationshipId": 2,
+      "relationshipType": "one-to-many",
+      "relationshipName": "evaluar",
+      "otherEntityName": "evaluar",
+      "otherEntityRelationshipName": "cervesa"
+    },
+    {
+      "relationshipId": 3,
+      "relationshipType": "one-to-many",
+      "relationshipName": "comentario",
+      "otherEntityName": "comentario",
+      "otherEntityRelationshipName": "cervesa"
+    },
+    {
+      "relationshipId": 4,
+      "relationshipType": "many-to-many",
+      "relationshipName": "ubicacion",
+      "otherEntityName": "ubicacion",
+      "ownerSide": false,
+      "otherEntityRelationshipName": "cervesa"
+    }
+  ],
+  "fields": [
+    {
+      "fieldId": 1,
+      "fieldName": "cervesaName",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 2,
+      "fieldName": "tipo",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 3,
+      "fieldName": "fabricante",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 4,
+      "fieldName": "pais",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 5,
+      "fieldName": "graduacion",
+      "fieldType": "Double"
+    },
+    {
+      "fieldId": 6,
+      "fieldName": "foto",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "any"
+    }
+  ],
+  "changelogDate": "20160427173441",
+  "dto": "no",
+  "pagination": "infinite-scroll",
+  "service": "no",
+  "entityTableName": "cervesa"
+}

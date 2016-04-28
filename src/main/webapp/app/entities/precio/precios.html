@@ -1,0 +1,68 @@
+<div>
+    <h2 translate="jhipsterApp.precio.home.title">Precios</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="precio.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  translate="jhipsterApp.precio.home.createLabel">
+                        Create new Precio
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.reset()">
+                    <th jh-sort-by="id"><span translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="precio"><span translate="jhipsterApp.precio.precio">Precio</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="ubicacion.id"><span translate="jhipsterApp.precio.ubicacion">ubicacion</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="cervesa.id"><span translate="jhipsterApp.precio.cervesa">cervesa</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="user.id"><span translate="jhipsterApp.precio.user">user</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody infinite-scroll="vm.loadPage(vm.page + 1)" infinite-scroll-disabled="vm.page >= vm.links['last']">
+                <tr ng-repeat="precio in vm.precios track by precio.id">
+                    <td><a ui-sref="precio-detail({id:precio.id})">{{precio.id}}</a></td>
+                    <td>{{precio.precio}}</td>
+                    <td>
+                        <a ui-sref="ubicacion-detail({id:precio.ubicacion.id})">{{precio.ubicacion.id}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="cervesa-detail({id:precio.cervesa.id})">{{precio.cervesa.id}}</a>
+                    </td>
+                    <td>
+                        {{precio.user.id}}
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="precio-detail({id:precio.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="precio.edit({id:precio.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="precio.delete({id:precio.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

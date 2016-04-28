@@ -1,0 +1,143 @@
+(function() {
+    'use strict';
+
+    angular
+        .module('jhipsterApp')
+        .config(stateConfig);
+
+    stateConfig.$inject = ['$stateProvider'];
+
+    function stateConfig($stateProvider) {
+        $stateProvider
+        .state('cervesa', {
+            parent: 'entity',
+            url: '/cervesa',
+            data: {
+                authorities: ['ROLE_USER'],
+                pageTitle: 'jhipsterApp.cervesa.home.title'
+            },
+            views: {
+                'content@': {
+                    templateUrl: 'app/entities/cervesa/cervesas.html',
+                    controller: 'CervesaController',
+                    controllerAs: 'vm'
+                }
+            },
+            resolve: {
+                translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                    $translatePartialLoader.addPart('cervesa');
+                    $translatePartialLoader.addPart('global');
+                    return $translate.refresh();
+                }]
+            }
+        })
+        .state('cervesa-detail', {
+            parent: 'entity',
+            url: '/cervesa/{id}',
+            data: {
+                authorities: ['ROLE_USER'],
+                pageTitle: 'jhipsterApp.cervesa.detail.title'
+            },
+            views: {
+                'content@': {
+                    templateUrl: 'app/entities/cervesa/cervesa-detail.html',
+                    controller: 'CervesaDetailController',
+                    controllerAs: 'vm'
+                }
+            },
+            resolve: {
+                translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                    $translatePartialLoader.addPart('cervesa');
+                    return $translate.refresh();
+                }],
+                entity: ['$stateParams', 'Cervesa', function($stateParams, Cervesa) {
+                    return Cervesa.get({id : $stateParams.id});
+                }]
+            }
+        })
+        .state('cervesa.new', {
+            parent: 'cervesa',
+            url: '/new',
+            data: {
+                authorities: ['ROLE_USER']
+            },
+            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                $uibModal.open({
+                    templateUrl: 'app/entities/cervesa/cervesa-dialog.html',
+                    controller: 'CervesaDialogController',
+                    controllerAs: 'vm',
+                    backdrop: 'static',
+                    size: 'lg',
+                    resolve: {
+                        entity: function () {
+                            return {
+                                cervesaName: null,
+                                tipo: null,
+                                fabricante: null,
+                                pais: null,
+                                graduacion: null,
+                                foto: null,
+                                fotoContentType: null,
+                                id: null
+                            };
+                        }
+                    }
+                }).result.then(function() {
+                    $state.go('cervesa', null, { reload: true });
+                }, function() {
+                    $state.go('cervesa');
+                });
+            }]
+        })
+        .state('cervesa.edit', {
+            parent: 'cervesa',
+            url: '/{id}/edit',
+            data: {
+                authorities: ['ROLE_USER']
+            },
+            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                $uibModal.open({
+                    templateUrl: 'app/entities/cervesa/cervesa-dialog.html',
+                    controller: 'CervesaDialogController',
+                    controllerAs: 'vm',
+                    backdrop: 'static',
+                    size: 'lg',
+                    resolve: {
+                        entity: ['Cervesa', function(Cervesa) {
+                            return Cervesa.get({id : $stateParams.id});
+                        }]
+                    }
+                }).result.then(function() {
+                    $state.go('cervesa', null, { reload: true });
+                }, function() {
+                    $state.go('^');
+                });
+            }]
+        })
+        .state('cervesa.delete', {
+            parent: 'cervesa',
+            url: '/{id}/delete',
+            data: {
+                authorities: ['ROLE_USER']
+            },
+            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                $uibModal.open({
+                    templateUrl: 'app/entities/cervesa/cervesa-delete-dialog.html',
+                    controller: 'CervesaDeleteController',
+                    controllerAs: 'vm',
+                    size: 'md',
+                    resolve: {
+                        entity: ['Cervesa', function(Cervesa) {
+                            return Cervesa.get({id : $stateParams.id});
+                        }]
+                    }
+                }).result.then(function() {
+                    $state.go('cervesa', null, { reload: true });
+                }, function() {
+                    $state.go('^');
+                });
+            }]
+        });
+    }
+
+})();

@@ -1,0 +1,44 @@
+
+<div>
+    <h2><span translate="jhipsterApp.cervesa.detail.title">Cervesa</span> {{vm.cervesa.id}}</h2>
+    <hr>
+    <dl class="dl-horizontal">
+        <dt><span translate="jhipsterApp.cervesa.cervesaName">CervesaName</dt></dt>
+        <dd>
+            <span>{{vm.cervesa.cervesaName}}<span>
+        </dd>
+        <hr>
+        <dt><span translate="jhipsterApp.cervesa.tipo">Tipo</dt></dt>
+        <dd>
+            <span>{{vm.cervesa.tipo}}<span>
+        </dd>
+        <hr>
+        <dt><span translate="jhipsterApp.cervesa.fabricante">Fabricante</dt></dt>
+        <dd>
+            <span>{{vm.cervesa.fabricante}}<span>
+        </dd>
+        <hr>
+        <dt><span translate="jhipsterApp.cervesa.pais">Pais</dt></dt>
+        <dd>
+            <span>{{vm.cervesa.pais}}<span>
+        </dd>
+        <hr>
+        <dt><span translate="jhipsterApp.cervesa.graduacion">Graduacion</dt></dt>
+        <dd>
+            <span>{{vm.cervesa.graduacion}}<span>
+        </dd>
+        <hr>
+        <dt><span translate="jhipsterApp.cervesa.foto">Foto</dt></dt>
+        <dd>
+            <a ng-click="vm.openFile(vm.cervesa.fotoContentType, vm.cervesa.foto)" ng-if="vm.cervesa.foto" target="_blank">open</a>
+            <div>{{vm.cervesa.fotoContentType}}, {{vm.byteSize(vm.cervesa.foto)}}</div>
+        </dd>
+        <hr>
+    </dl>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

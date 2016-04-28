@@ -1,0 +1,10 @@
+{
+  "relationships": [],
+  "fields": [],
+  "changelogDate": "20160423111646",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "javadoc": "The Employee entity.",
+  "entityTableName": "player"
+}

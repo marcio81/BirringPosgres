@@ -1,0 +1,46 @@
+{
+  "relationships": [
+    {
+      "relationshipId": 1,
+      "relationshipType": "one-to-many",
+      "relationshipName": "precio",
+      "otherEntityName": "precio",
+      "otherEntityRelationshipName": "ubicacion"
+    },
+    {
+      "relationshipId": 2,
+      "relationshipType": "many-to-many",
+      "relationshipName": "cervesa",
+      "otherEntityName": "cervesa",
+      "otherEntityField": "cervesaId",
+      "ownerSide": true
+    }
+  ],
+  "fields": [
+    {
+      "fieldId": 1,
+      "fieldName": "ubiName",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 2,
+      "fieldName": "direccion",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 3,
+      "fieldName": "longitud",
+      "fieldType": "Float"
+    },
+    {
+      "fieldId": 4,
+      "fieldName": "latitud",
+      "fieldType": "Float"
+    }
+  ],
+  "changelogDate": "20160427173440",
+  "dto": "no",
+  "pagination": "infinite-scroll",
+  "service": "no",
+  "entityTableName": "ubicacion"
+}

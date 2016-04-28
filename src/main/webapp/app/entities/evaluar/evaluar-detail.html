@@ -1,0 +1,28 @@
+
+<div>
+    <h2><span translate="jhipsterApp.evaluar.detail.title">Evaluar</span> {{vm.evaluar.id}}</h2>
+    <hr>
+    <dl class="dl-horizontal">
+        <dt><span translate="jhipsterApp.evaluar.evaluacion">Evaluacion</dt></dt>
+        <dd>
+            <span>{{vm.evaluar.evaluacion}}<span>
+        </dd>
+        <hr>
+        <dt><span translate="jhipsterApp.evaluar.cervesa">cervesa</span></dt>
+        <dd>
+            <a ui-sref="cervesa-detail({id:vm.evaluar.cervesa.id})">{{vm.evaluar.cervesa.id}}</a>
+        </dd>
+        <hr>
+        <dt><span translate="jhipsterApp.evaluar.user">user</span></dt>
+        <dd>
+            {{vm.evaluar.user.id}}
+        </dd>
+        <hr>
+    </dl>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

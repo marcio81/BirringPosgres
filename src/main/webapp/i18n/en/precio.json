@@ -1,0 +1,25 @@
+{
+    "jhipsterApp": {
+        "precio" : {
+            "home": {
+                "title": "Precios",
+                "createLabel": "Create a new Precio",
+                "createOrEditLabel": "Create or edit a Precio",
+                "search": "Search for Precio"
+            },
+            "created": "A new Precio is created with identifier {{ param }}",
+            "updated": "A Precio is updated with identifier {{ param }}",
+            "deleted": "A Precio is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Precio {{ id }}?"
+            },
+            "detail": {
+                "title": "Precio"
+            },
+            "precio": "Precio",
+            "ubicacion": "Ubicacion",
+            "cervesa": "Cervesa",
+            "user": "User"
+        }
+    }
+}

@@ -1,0 +1,31 @@
+{
+    "jhipsterApp": {
+        "cervesa" : {
+            "home": {
+                "title": "Cervesas",
+                "createLabel": "Create a new Cervesa",
+                "createOrEditLabel": "Create or edit a Cervesa",
+                "search": "Search for Cervesa"
+            },
+            "created": "A new Cervesa is created with identifier {{ param }}",
+            "updated": "A Cervesa is updated with identifier {{ param }}",
+            "deleted": "A Cervesa is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Cervesa {{ id }}?"
+            },
+            "detail": {
+                "title": "Cervesa"
+            },
+            "cervesaName": "CervesaName",
+            "tipo": "Tipo",
+            "fabricante": "Fabricante",
+            "pais": "Pais",
+            "graduacion": "Graduacion",
+            "foto": "Foto",
+            "precio": "Precio",
+            "evaluar": "Evaluar",
+            "comentario": "Comentario",
+            "ubicacion": "Ubicacion"
+        }
+    }
+}

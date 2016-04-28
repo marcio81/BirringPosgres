@@ -1,0 +1,24 @@
+{
+    "jhipsterApp": {
+        "evaluar" : {
+            "home": {
+                "title": "Evaluars",
+                "createLabel": "Create a new Evaluar",
+                "createOrEditLabel": "Create or edit a Evaluar",
+                "search": "Search for Evaluar"
+            },
+            "created": "A new Evaluar is created with identifier {{ param }}",
+            "updated": "A Evaluar is updated with identifier {{ param }}",
+            "deleted": "A Evaluar is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Evaluar {{ id }}?"
+            },
+            "detail": {
+                "title": "Evaluar"
+            },
+            "evaluacion": "Evaluacion",
+            "cervesa": "Cervesa",
+            "user": "User"
+        }
+    }
+}
