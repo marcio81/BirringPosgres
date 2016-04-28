@@ -7,7 +7,6 @@
             "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
             "entities": {
                 "main": "Entidades",
-                "player": "Player",
                 "cervesa": "Cervesa",
                 "ubicacion": "Ubicacion",
                 "precio": "Precio",
