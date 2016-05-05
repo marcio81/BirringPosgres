@@ -1,0 +1,37 @@
+/* HEADER */
+
+.navbar{
+    margin-bottom: 0;
+}
+/* si hubiese dos jumbotrones en la misma pagina se tendria que usar .jumbotron .jumbotron-dsadkljdjhas y en el html poner 2 clases*/
+.jumbotron{
+    background:#f0dd0a;
+    /*color:#fff;  blanco */
+    color:black;
+    padding:20px 0;
+}
+
+/*  para cambiar el titulo del jumbotron .jumbotron .titulo-blog */
+.tituloSubapartado{
+    /*font-size: 80px;*/
+    text-align: center;
+}
+
+/*.navbar-brand .imagenBrand{
+    width: 20%;
+    height: 20%;
+    padding: 50px 0;
+    max-width: 100%;
+    height: auto;
+    display: block;
+}*/
+
+/* CENTRAR EL ICONO DE BIRRING NAV http://codepen.io/bootstrapped/pen/KwYGwq*/
+.navbar-brand {
+  padding: 0px;
+}
+.navbar-brand>img {
+  height: 100%;
+  /*padding: 15px;*/
+  width: auto;
+}
