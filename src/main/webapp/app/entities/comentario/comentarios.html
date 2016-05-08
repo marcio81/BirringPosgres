@@ -1,3 +1,12 @@
+<!-- Donde se cargan los archivos css que se aplican -->
+<!-- Unir zonas html -->
+<!-- JUMBOTRON -->
+<section class="jumbotron">
+    <div class="container">
+        <h1 class="titulo-blog">Birring</h1>
+        <p>Comunidad cervezera</p>
+    </div>
+</section>
 <div>
     <h2 translate="jhipsterApp.comentario.home.title">Comentarios</h2>
     <jhi-alert></jhi-alert>
@@ -7,7 +16,7 @@
                 <button class="btn btn-primary" ui-sref="comentario.new" >
                     <span class="glyphicon glyphicon-plus"></span>
                     <span  translate="jhipsterApp.comentario.home.createLabel">
-                        Create new Comentario
+                        Nuevo Comentario
                     </span>
                 </button>
             </div>
@@ -15,7 +24,7 @@
     </div>
     <br/>
     <div class="table-responsive">
-        <table class="jh-table table table-striped">
+        <table class="jh-table table table-striped" id="container">
             <thead>
                 <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.reset()">
                     <th jh-sort-by="id"><span translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
