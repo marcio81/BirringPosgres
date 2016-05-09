@@ -21,6 +21,10 @@ body {
     color: #777;
     padding-bottom: 0;
 }
+/*Editando navBar*/
+.navContainer .navBarNew{
+    background-color: #0A0A0A;
+}
 
 /* CUSTOMIZE THE NAVBAR
 -------------------------------------------------- */
