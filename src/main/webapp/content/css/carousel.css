@@ -22,8 +22,18 @@ body {
     padding-bottom: 0;
 }
 /*Editando navBar*/
-.navContainer .navBarNew{
+/*.navContainer .navBarNew{
     background-color: #0A0A0A;
+}*/
+
+/* Es posicionar el content con respecto al navbar */
+.well{
+    padding-top: 5px;
+    margin-top: 92px;
+}
+/* Alejar el navBar de la parte superior de la pagina */
+.navbar-wrapper{
+    margin-top: 10px;
 }
 
 /* CUSTOMIZE THE NAVBAR
