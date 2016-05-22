@@ -18,7 +18,17 @@
                     return data;
                 }
             },
-            'update': { method:'PUT' }
-        });
-    }
-})();
+            'update': { method:'PUT' },
+
+            'consultaTop': {
+                method: 'GET',
+                isArray: true,
+                url:'api/topcervesas'
+        }
+        })
+
+    /*'consultaTop': {
+        method: 'GET',
+            isArray: true,
+            url:'api/cervesas/:consultarEnEquipo'    */
+}});

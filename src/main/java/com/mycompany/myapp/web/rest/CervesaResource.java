@@ -8,6 +8,8 @@ import com.mycompany.myapp.web.rest.util.PaginationUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -29,10 +31,10 @@ import java.util.Optional;
 public class CervesaResource {
 
     private final Logger log = LoggerFactory.getLogger(CervesaResource.class);
-        
+
     @Inject
     private CervesaRepository cervesaRepository;
-    
+
     /**
      * POST  /cervesas : Create a new cervesa.
      *
@@ -93,7 +95,7 @@ public class CervesaResource {
     public ResponseEntity<List<Cervesa>> getAllCervesas(Pageable pageable)
         throws URISyntaxException {
         log.debug("REST request to get a page of Cervesas");
-        Page<Cervesa> page = cervesaRepository.findAll(pageable); 
+        Page<Cervesa> page = cervesaRepository.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/cervesas");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
@@ -132,6 +134,62 @@ public class CervesaResource {
         log.debug("REST request to delete Cervesa : {}", id);
         cervesaRepository.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert("cervesa", id.toString())).build();
+    }
+
+
+
+
+    // NUEVO METODO GET TOP CERVEZAS
+    /*@RequestMapping(value = "/topcervesas",
+
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public ResponseEntity<List<Cervesa>> bombas2(@PathVariable Integer consultarTop) {//bombas2 lo pone en el swager Administation -> api no sirve
+
+        List<Cervesa> cervezas= cervesaRepository.TopCervezas(consultarTop); // TopCervezas es la query en el repository y le pasa 1 params
+
+        return new ResponseEntity<>(cervezas, HttpStatus.OK);
+
+    }*/
+
+    /*@RequestMapping(value = "/topcervesas",
+
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public ResponseEntity<List<Cervesa>> bombas2() {//bombas2 lo pone en el swager Administation -> api no sirve
+
+        List<Cervesa> cervezas= cervesaRepository.TopCervezas(); // TopCervezas es la query en el repository y le pasa 1 params
+
+        return new ResponseEntity<>(cervezas, HttpStatus.OK);
+
+    }*/
+
+    /*@RequestMapping(value = "/topcervesas",
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public ResponseEntity<List<Cervesa>> getTop10cervesa(Pageable pageable)//swagger
+        throws URISyntaxException {
+        Pageable topTen = new PageRequest(0, 10);
+        log.debug("REST request to get a page of ApuestaRealizadass");
+        Page<Cervesa> page = CervesaRepository.findByTopCervesas(topTen);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/topcervesas");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }*/
+
+    @RequestMapping(value = "/topcervesas",
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public ResponseEntity<List<Cervesa>> getTopCervesas(Pageable pageable)
+        throws URISyntaxException {
+        Pageable topTen = new PageRequest(0, 10);
+        log.debug("REST request to get a page of Cervesas");
+        Page<Cervesa> page = cervesaRepository.findByTopCervesas(topTen);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/topcervesas");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
 
 }
