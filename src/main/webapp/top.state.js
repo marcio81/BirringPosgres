@@ -8,11 +8,12 @@
     stateConfig.$inject = ['$stateProvider'];
 
     function stateConfig($stateProvider) {
-        $stateProvider.state('Top10', {
+        $stateProvider
+            .state('top10', {
             parent: 'app',
             url: '/topcervesas',
             data: {
-                authorities: []
+                authorities: ['ROLE_USER']
             },
             views: {
                 'content@': {
