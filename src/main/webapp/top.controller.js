@@ -1,4 +1,4 @@
-/*(function() {
+(function() {
     'use strict';
 
     angular
@@ -37,8 +37,8 @@
     }
     }
 });
-*/
- 'use strict';
+
+ /*'use strict';
  angular.module('jhipsterApp')
  .controller('CtrlTop',function ($scope, $http, Cervesa) {
 
@@ -47,3 +47,4 @@
          })
 
  });
+*/
