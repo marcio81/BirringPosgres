@@ -19,9 +19,9 @@ public interface CervesaRepository extends JpaRepository<Cervesa,Long> {
     List<Cervesa> TopCervezas();*/
     //@Query("select c from Cervesa c group by c.evaluars order by COUNT(c.evaluars) desc ")
 
-    @Query("select c from Cervesa c ") //este funciona
+   // @Query("select c from Cervesa c ") //este funciona
     //@Query("select c from Cervesa c, Evaluar ev where c.evaluars = ev.id")
-    Page<Cervesa> findByTopCervesas(Pageable topTen);
+   // Page<Cervesa> findByTopCervesas(Pageable topTen);
 
     //@Query("select c from Cervesa c group by c.evaluars order by COUNT(c.evaluars) desc ")
     //Page<Cervesa> findByTopCervesas(Pageable var1);

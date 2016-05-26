@@ -179,7 +179,7 @@ public class CervesaResource {
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }*/
 
-    @RequestMapping(value = "/topcervesas",
+   /* @RequestMapping(value = "/topcervesas",
         method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
@@ -190,6 +190,6 @@ public class CervesaResource {
         Page<Cervesa> page = cervesaRepository.findByTopCervesas(topTen);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/topcervesas");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
-    }
+    }*/
 
 }

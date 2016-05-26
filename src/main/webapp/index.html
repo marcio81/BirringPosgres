@@ -1,9 +1,9 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" ng-app="jhipsterApp">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>jhipster</title>
+    <title>Birring</title>
     <meta name="description" content="">
     <meta name="google" value="notranslate">
     <meta name="viewport" content="width=device-width">
@@ -22,11 +22,16 @@
     <link rel="stylesheet" href="content/css/tables.css">
     <link rel="stylesheet" href="content/css/carousel.css">
     <!-- endbuild -->
+    <!-- GOOGLE MAPS -->
+    <script src="https://maps.google.com/maps/api/js?libraries=placeses,visualization,drawing,geometry,places"></script>
+
+
+    <!-- END GOOGLE MAPS -->
 </head>
-<body ng-app="jhipsterApp" id="backgroundBeer">
+<body id="backgroundBeer">
     <!--[if lt IE 9]>
         <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
+    [endif]-->
     <div ng-show="{{ENV === 'dev'}}" class="development" ng-cloak></div>
     <div ui-view="navbar" ng-cloak></div>
 
@@ -96,6 +101,10 @@
         ga('create','UA-XXXXX-X');ga('send','pageview');
     </script>-->
 
+
+    <!--GOOGLE MAPS -->
+
+
     <!-- build:js app/vendor.js -->
     <!-- bower:js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
@@ -119,6 +128,7 @@
     <script src="bower_components/json3/lib/json3.js"></script>
     <script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
     <script src="bower_components/ngInfiniteScroll/build/ng-infinite-scroll.js"></script>
+
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -262,11 +272,11 @@
     <script src="app/app.state.js"></script>
     <script src="app/app.constants.js"></script>
     <!--  VIC -->
-    <!-- <script src="AppExtra.js"></script>-->
-    <script src="top.controller.js"></script>
-    <script src="top.state.js"></script>
+
     <!-- endinject -->
     <!-- endbuild -->
-
+    <script src="https://maps.google.com/maps/api/js?libraries=placeses,visualization,drawing,geometry,places"></script>
+    <script src="/bower_components/ngmap/build/scripts/ng-map.min.js"></script>
+    <script src="/bower_components/ngmap/build/scripts/ng-map.js"></script>
 </body>
 </html>
