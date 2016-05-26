@@ -14,4 +14,6 @@ public interface EvaluarRepository extends JpaRepository<Evaluar,Long> {
     @Query("select evaluar from Evaluar evaluar where evaluar.user.login = ?#{principal.username}")
     List<Evaluar> findByUserIsCurrentUser();
 
+    @Query("SELECT AVG(e.evaluacion), e.cervesa.id FROM Evaluar e group by e.cervesa.id")
+    List<Object[]> findTop10();
 }
