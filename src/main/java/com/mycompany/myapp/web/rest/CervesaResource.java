@@ -3,6 +3,8 @@ package com.mycompany.myapp.web.rest;
 import com.codahale.metrics.annotation.Timed;
 import com.mycompany.myapp.domain.Cervesa;
 import com.mycompany.myapp.repository.CervesaRepository;
+import com.mycompany.myapp.repository.EvaluarRepository;
+import com.mycompany.myapp.web.rest.dto.Top10DTO;
 import com.mycompany.myapp.web.rest.util.HeaderUtil;
 import com.mycompany.myapp.web.rest.util.PaginationUtil;
 import org.slf4j.Logger;
@@ -34,6 +36,9 @@ public class CervesaResource {
 
     @Inject
     private CervesaRepository cervesaRepository;
+
+    @Inject
+    private EvaluarRepository evaluarRepository;
 
     /**
      * POST  /cervesas : Create a new cervesa.
@@ -183,13 +188,31 @@ public class CervesaResource {
         method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<List<Cervesa>> getTopCervesas(Pageable pageable)
+    public ResponseEntity<Top10DTO> getTopCervesas(Pageable pageable)
         throws URISyntaxException {
         Pageable topTen = new PageRequest(0, 10);
         log.debug("REST request to get a page of Cervesas");
-        Page<Cervesa> page = cervesaRepository.findByTopCervesas(topTen);
+
+        /*List<Object[]> top10 = evaluarRepository.findTop10(topTen);
+
+        top10.forEach((result) ->  System.out.println("media = " + result[0] + "idCerveza = " + result[1]));*/
+
+        /*Page<Cervesa> page = cervesaRepository.findByTopCervesas(topTen);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/topcervesas");
-        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);*/
+
+        /*Page<Cervesa> page = cervesaRepository.findAll(pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/cervesas");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);*/
+
+
+        Page<Object[]> page = evaluarRepository.findTop10(topTen);
+
+        Top10DTO top10DTO = new Top10DTO();// DTO: transferir datos
+        top10DTO.setCervezas(page.getContent());
+
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/topcervesas");
+        return new ResponseEntity<>(top10DTO, headers, HttpStatus.OK);
     }
 
 }

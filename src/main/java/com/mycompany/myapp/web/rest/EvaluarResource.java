@@ -29,10 +29,10 @@ import java.util.Optional;
 public class EvaluarResource {
 
     private final Logger log = LoggerFactory.getLogger(EvaluarResource.class);
-        
+
     @Inject
     private EvaluarRepository evaluarRepository;
-    
+
     /**
      * POST  /evaluars : Create a new evaluar.
      *
@@ -93,7 +93,12 @@ public class EvaluarResource {
     public ResponseEntity<List<Evaluar>> getAllEvaluars(Pageable pageable)
         throws URISyntaxException {
         log.debug("REST request to get a page of Evaluars");
-        Page<Evaluar> page = evaluarRepository.findAll(pageable); 
+
+        /*List<Object[]> top10 = evaluarRepository.findTop10();
+
+        top10.forEach((result) ->  System.out.println("media = " + result[0] + "idCerveza = " + result[1]));*/
+
+        Page<Evaluar> page = evaluarRepository.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/evaluars");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }

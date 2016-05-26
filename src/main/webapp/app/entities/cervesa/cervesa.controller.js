@@ -39,6 +39,16 @@
                 AlertService.error(error.data.message);
             }
         };
+
+        vm.getTopCervezas = function () {
+            Cervesa.consultaTop(function (response) {
+                //$http.get("api/cervesas").then(function (response) {
+                vm.topCervesas = response;
+                //});
+            });
+        };
+
+
         vm.reset = function() {
             vm.page = 0;
             vm.cervesas = [];
@@ -50,6 +60,8 @@
         };
 
         vm.loadAll();
+
+        vm.getTopCervezas();
 
     }
 })();

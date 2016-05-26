@@ -17,7 +17,7 @@
             },
             views: {
                 'content@': {
-                    templateUrl: 'Top10.html',
+                    templateUrl: 'app/top10/Top10.html',
                     controller: 'CtrlTop',
                     controllerAs: 'vm'
                 }
