@@ -36,9 +36,9 @@
                 Ubicacion.save(vm.ubicacion, onSaveSuccess, onSaveError);
             }
         };
+// Google MAPS
+      
 
-        vm.clear = function() {
-            $uibModalInstance.dismiss('cancel');
-        };
+
     }
 })();
