@@ -62,6 +62,6 @@
         vm.loadAll();
 
         vm.getTopCervezas();
-
+/**/
     }
 })();
