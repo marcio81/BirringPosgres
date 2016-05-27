@@ -13,6 +13,6 @@ public interface ComentarioRepository extends JpaRepository<Comentario,Long> {
 
     @Query("select comentario from Comentario comentario where comentario.user.login = ?#{principal.username}")
     List<Comentario> findByUserIsCurrentUser();
-    @Query("SELECT c.comentario, c.cervesa.id FROM Comentario c where comentario.id = ?#(cervesa.comentario)")
-    List<Object[]> findComentario(); //Lista de comentarios?
+    //@Query("SELECT c.comentario, c.cervesa.id FROM Comentario c where comentario.id = ?#(cervesa.comentario)")
+    //List<Object[]> findComentario();
 }

@@ -26,13 +26,14 @@ import java.util.Optional;
  */
 @RestController
 @RequestMapping("/api")
-public class ComentarioResource {
+public class
+ComentarioResource {
 
     private final Logger log = LoggerFactory.getLogger(ComentarioResource.class);
-        
+
     @Inject
     private ComentarioRepository comentarioRepository;
-    
+
     /**
      * POST  /comentarios : Create a new comentario.
      *
@@ -93,7 +94,7 @@ public class ComentarioResource {
     public ResponseEntity<List<Comentario>> getAllComentarios(Pageable pageable)
         throws URISyntaxException {
         log.debug("REST request to get a page of Comentarios");
-        Page<Comentario> page = comentarioRepository.findAll(pageable); 
+        Page<Comentario> page = comentarioRepository.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/comentarios");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
