@@ -15,6 +15,12 @@
         <!-- MOSTRAR  ADMIN EXCEPTO ACCOUNT Y HOME LI-->
         <div class="collapse navbar-collapse" id="navbar-collapse" uib-collapse="vm.navCollapsed" ng-switch="vm.isAuthenticated()">
             <ul class="nav navbar-nav navbar-right">
+                <li ui-sref-active="active">
+                    <a ui-sref="busca" ng-click="vm.navCollapsed = true">
+                        <span class="glyphicon glyphicon-search"></span>
+                        <span class="hidden-sm">Search</span>
+                    </a>
+                </li>
                 <!-- TRY -->
                 <li ui-sref-active="active">
                     <a ui-sref="top10" ng-click="vm.navCollapsed = true">

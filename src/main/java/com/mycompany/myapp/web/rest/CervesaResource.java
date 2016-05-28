@@ -202,4 +202,16 @@ public class CervesaResource {
         return new ResponseEntity<>(top10DTO, headers, HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/buscacervesas",
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public ResponseEntity<List<Cervesa>> getAllBuCervesas(Pageable pageable)
+        throws URISyntaxException {
+        log.debug("REST request to get a page of Cervesas");
+        Page<Cervesa> page = cervesaRepository.findAll(pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/buscacervesas");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
+
 }

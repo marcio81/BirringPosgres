@@ -43,8 +43,8 @@ public class Cervesa implements Serializable {
     @Column(name = "foto")
     private byte[] foto;
 
-    @Column(name = "foto_content_type")    
-    private String fotoContentType;
+    //@Column(name = "foto_content_type")
+    //private String fotoContentType;
 
     @OneToMany(mappedBy = "cervesa")
     @JsonIgnore
@@ -122,13 +122,13 @@ public class Cervesa implements Serializable {
         this.foto = foto;
     }
 
-    public String getFotoContentType() {
-        return fotoContentType;
-    }
+   // public String getFotoContentType() {
+     //   return fotoContentType;
+    //}
 
-    public void setFotoContentType(String fotoContentType) {
-        this.fotoContentType = fotoContentType;
-    }
+    //public void setFotoContentType(String fotoContentType) {
+   //     this.fotoContentType = fotoContentType;
+  //  }
 
     public Set<Precio> getPrecios() {
         return precios;
@@ -192,7 +192,7 @@ public class Cervesa implements Serializable {
             ", pais='" + pais + "'" +
             ", graduacion='" + graduacion + "'" +
             ", foto='" + foto + "'" +
-            ", fotoContentType='" + fotoContentType + "'" +
+           // ", fotoContentType='" + fotoContentType + "'" +
             '}';
     }
 }

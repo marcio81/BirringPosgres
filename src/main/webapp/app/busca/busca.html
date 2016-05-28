@@ -1,0 +1,22 @@
+Cervezas:
+<input type="text" ng-model="consultaBu" ng-change="getAllBuCervesas"/>
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <td>Foto</td>
+            <td>Nombre</td>
+            <td>Tipo</td>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="cervesa in cervesas | filter:consultaBu">
+            <td>{{cervesa.foto}}</td>
+            <td>{{cervesa.cervesaName}}</td>
+            <td>{{cervesa.tipo}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>

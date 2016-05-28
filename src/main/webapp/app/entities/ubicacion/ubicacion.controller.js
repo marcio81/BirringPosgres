@@ -5,7 +5,7 @@
         .module('jhipsterApp')
         .controller('UbicacionController', UbicacionController);
 
-    UbicacionController.$inject = ['$scope', '$state', 'Ubicacion', 'ParseLinks', 'AlertService'];
+    UbicacionController.$inject = ['$scope', '$state', 'Ubicacion', 'ParseLinks', 'AlertService','NgMap'];
 
     function UbicacionController ($scope, $state, Ubicacion, ParseLinks, AlertService) {
         var vm = this;
@@ -37,6 +37,8 @@
                 AlertService.error(error.data.message);
             }
         };
+        
+
         vm.reset = function() {
             vm.page = 0;
             vm.ubicacions = [];
@@ -49,5 +51,6 @@
 
         vm.loadAll();
 
+       
     }
 })();

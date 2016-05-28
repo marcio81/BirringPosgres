@@ -45,8 +45,10 @@
                 <td>{{cervesa.fabricante}}</td>
                 <td>{{cervesa.pais}}</td>
                 <td>{{cervesa.graduacion}}</td>
-                <td><a ng-click="vm.openFile(cervesa.fotoContentType, cervesa.foto)" ng-if="cervesa.foto" target="_blank">open</a>
-                    {{cervesa.fotoContentType}}, {{byteSize(cervesa.foto)}}</td>
+                <td> <img data-ng-src="{{'data:image/*;base64,' + cervesa.foto}}" style="max-height: 30px;" ng-if="cervesa.foto"/>
+                    {{byteSize(cervesa.foto)}}</td>
+                  <!-- <a ng-click="vm.openFile(cervesa.fotoContentType, cervesa.foto)" ng-if="cervesa.foto" target="_blank">open</a>
+                    {{cervesa.fotoContentType}}, {{byteSize(cervesa.foto)}}</td>-->
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"
