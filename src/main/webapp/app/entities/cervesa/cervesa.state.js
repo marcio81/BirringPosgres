@@ -137,7 +137,22 @@
                     $state.go('^');
                 });
             }]
-        });
+        })
+        //TOP 10
+            .state('top10', {
+                parent: 'app',
+                url: '/topcervesas',
+                data: {
+                    authorities: ['ROLE_USER']
+                },
+                views: {
+                    'content@': {
+                        templateUrl: 'app/top10/Top10.html',
+                        controller: 'CervesaController',
+                        controllerAs: 'vm'
+                    }
+                }
+            });
     }
 
 })();

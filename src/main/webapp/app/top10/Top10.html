@@ -1,40 +1,16 @@
-<!-- <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-<div class="table-responsive" ng-app="jhipsterApp" ng-controller="CtrlTop" ng-init="getTopCervezas()">-->
 <div class="table-responsive">
     <table class="table table-striped">
         <thead>
         <tr>
-            <td>Foto</td>
             <td>Nombre</td>
-            <td>Fabricante</td>
-            <td>Tipo</td>
-            <td>Pais</td>
-            <td>Graduación</td>
             <td>Valoración</td>
-            <td>Precio medio</td>
         </tr>
         </thead>
-        <tbody>
-        <tr ng-repeat="cervesa in cervesas">
-            <td>{{cervesa.foto}}</td>
-            <td>{{cervesa.cervesaName}}</td>
-            <td>{{cervesa.fabricante}}</td>
-            <td>{{cervesa.tipo}}</td>
-            <td>{{cervesa.pais}}</td>
-            <td>{{cervesa.graduacion}}</td>
-            <td>{{cervesa.evaluars}}</td>
-            <td>{{cervesa.precios}}</td>
+        <tbody ng-repeat="obj in vm.topCervesas">
+        <tr ng-repeat="cervesa in obj">
+            <td>{{cervesa[2]}}</td>
+            <td>{{cervesa[0]}}</td>
         </tr>
         </tbody>
     </table>
 </div>
-<!--  <script>
-    var app = angular.module('jhipsterApp', []);
-    app.controller('CtrlTop', function($scope, $http) {
-        $scope.getTopCervezas = function(){
-            Cervesa.consultaTop( function (response){
-                $scope.cervesas = response;
-            })
-        };
-    });
-</script>-->

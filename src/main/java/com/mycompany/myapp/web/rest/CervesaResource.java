@@ -193,19 +193,6 @@ public class CervesaResource {
         Pageable topTen = new PageRequest(0, 10);
         log.debug("REST request to get a page of Cervesas");
 
-        /*List<Object[]> top10 = evaluarRepository.findTop10(topTen);
-
-        top10.forEach((result) ->  System.out.println("media = " + result[0] + "idCerveza = " + result[1]));*/
-
-        /*Page<Cervesa> page = cervesaRepository.findByTopCervesas(topTen);
-        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/topcervesas");
-        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);*/
-
-        /*Page<Cervesa> page = cervesaRepository.findAll(pageable);
-        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/cervesas");
-        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);*/
-
-
         Page<Object[]> page = evaluarRepository.findTop10(topTen);
 
         Top10DTO top10DTO = new Top10DTO();// DTO: transferir datos

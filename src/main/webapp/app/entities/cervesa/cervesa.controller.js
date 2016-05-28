@@ -10,6 +10,8 @@
     function CervesaController ($scope, $state, DataUtils, Cervesa, ParseLinks, AlertService) {
         var vm = this;
         vm.cervesas = [];
+        //probar instanciando aqui
+        //vm.topCervesas = [];
         vm.predicate = 'id';
         vm.reverse = true;
         vm.page = 0;
