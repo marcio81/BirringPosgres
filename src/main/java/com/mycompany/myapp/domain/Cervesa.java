@@ -195,4 +195,6 @@ public class Cervesa implements Serializable {
             ", fotoContentType='" + fotoContentType + "'" +
             '}';
     }
+
+
 }

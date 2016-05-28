@@ -2,12 +2,17 @@
     <table class="table table-striped">
         <thead>
         <tr>
+            <td>Foto</td>
             <td>Nombre</td>
             <td>Valoración</td>
         </tr>
         </thead>
         <tbody ng-repeat="obj in vm.topCervesas">
         <tr ng-repeat="cervesa in obj">
+            <!--<td><img ng-src="cervesa[3]" /></td>-->
+            <td> <img data-ng-src="{{'data:image/*;base64,' + cervesa[3]}}" style="max-height: 30px;" ng-if="cervesa[3]"/>
+                {{byteSize(cervesa[3])}}</td>
+                <!--{{byteSize({{cervesa[3]}})}}</td>-->
             <td>{{cervesa[2]}}</td>
             <td>{{cervesa[0]}}</td>
         </tr>
