@@ -201,17 +201,17 @@ public class CervesaResource {
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/topcervesas");
         return new ResponseEntity<>(top10DTO, headers, HttpStatus.OK);
     }
-
-    @RequestMapping(value = "/buscacervesas",
+// BUSCADOR
+    @RequestMapping(value = "/buscacervesas/{cervesaName}",
         method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<List<Cervesa>> getAllBuCervesas(Pageable pageable)
+    public ResponseEntity<List<Cervesa>> getBuCervesas(@PathVariable String cervesaName)
         throws URISyntaxException {
-        log.debug("REST request to get a page of Cervesas");
-        Page<Cervesa> page = cervesaRepository.findAll(pageable);
-        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/buscacervesas");
-        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+        log.debug("REST request to get Cervesa : {}", cervesaName);
+       List<Cervesa> cerva = cervesaRepository.findAllCerva(cervesaName);
+
+        return new ResponseEntity<>(cerva, HttpStatus.OK);
     }
 
 }

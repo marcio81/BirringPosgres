@@ -23,6 +23,11 @@
                 method: 'GET',
                 isArray: false,
                 url:'api/topcervesas'
+            },
+            'consultaBu': {
+                method: 'GET',
+                isArray: true,
+                url:'api/buscacervesas/:cervesaName'
             }
         });
     }

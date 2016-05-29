@@ -138,6 +138,8 @@
                 });
             }]
         })
+       
+            
         //TOP 10
             .state('top10', {
                 parent: 'app',
@@ -159,7 +161,23 @@
                         return $translate.refresh();
                     }]
                 }
+            })
+            //Buscador
+            .state('busca', {
+                parent: 'app',
+                url: '/buscacervesas',
+                data: {
+                    authorities: ['ROLE_USER']
+                },
+                views: {
+                    'content@': {
+                        templateUrl: 'app/busca/busca.html',
+                        controller: 'CervesaController',
+                        controllerAs: 'vm'
+                    }
+                }
             });
+
     }
 
 })();
