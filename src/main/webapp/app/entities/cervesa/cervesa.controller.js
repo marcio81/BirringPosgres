@@ -50,7 +50,7 @@
             });
         };
         vm.getBuCervesas = function () {
-            Cervesa.consultaBu(function (response) {
+            Cervesa.consultaBu({consultaBu: vm.bucervesas}, function (response) {
 
                 vm.cervesas = response;
 
@@ -71,6 +71,7 @@
 
         vm.getTopCervezas();
         vm.getBuCervesas();
+       
 /**/
     }
 })();

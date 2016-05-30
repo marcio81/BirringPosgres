@@ -1,5 +1,5 @@
 Cervezas:
-<input type="text" ng-model="consultaBu" ng-change="getBuCervesas"/>
+<input type="text" ng-model="bucervesas" ng-change="getBuCervesas()"/>
 
 <div class="table-responsive">
     <table class="table table-striped">
@@ -12,10 +12,11 @@ Cervezas:
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="cervesa in cervesas">
-            <td>{{cervesa.foto}}</td>
-            <td>{{cervesa.cervesaName}}</td>
-            <td>{{cervesa.tipo}}</td>
+        <tr ng-repeat="c in vm.cervesas">
+            <td><img data-ng-src="{{'data:image/*;base64,' + c.foto}}" style="max-height: 30px;" ng-if="c.foto"/>
+                {{byteSize(c.foto)}}</td>
+            <td>{{c.cervesaName}}</td>
+            <td>{{c.tipo}}</td>
         </tr>
         </tbody>
     </table>

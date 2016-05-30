@@ -27,6 +27,6 @@ public interface CervesaRepository extends JpaRepository<Cervesa,Long> {
     //Page<Cervesa> findByTopCervesas(Pageable var1);
 
    // List<Cervesa> TopCervezas(@Param("top") Integer top);//"topcervezas" es el que comprueba con la query
-   @Query("SELECT c  FROM Cervesa c where c.cervesaName = :cervesaName")
+   @Query("SELECT cervesaName, foto, tipo FROM Cervesa where cervesaName = :cervesaName")
   List<Cervesa> findAllCerva(@Param("cervesaName") String cervesaName);
 }

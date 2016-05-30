@@ -208,7 +208,7 @@ public class CervesaResource {
     @Timed
     public ResponseEntity<List<Cervesa>> getBuCervesas(@PathVariable String cervesaName)
         throws URISyntaxException {
-        log.debug("REST request to get Cervesa : {}", cervesaName);
+        log.debug("REST request to get Cervesa: {}", cervesaName);
        List<Cervesa> cerva = cervesaRepository.findAllCerva(cervesaName);
 
         return new ResponseEntity<>(cerva, HttpStatus.OK);
