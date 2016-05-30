@@ -138,6 +138,8 @@
                 });
             }]
         })
+
+
         //TOP 10
             .state('top10', {
                 parent: 'app',
@@ -160,49 +162,29 @@
                     }]
                 }
             })
-            //CREAR CERVEZA
-            .state('crearCerveza', {
-                parent: 'home',
-                url: '/new',
+            //Buscador
+            .state('busca', {
+                parent: 'app',
+                url: '/buscacervesas',
                 data: {
                     authorities: ['ROLE_USER']
                 },
-                onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
-                    $uibModal.open({
-                        templateUrl: 'app/entities/cervesa/cervesa-dialog2.html',
-                        controller: 'CervesaDialogController',
-                        controllerAs: 'vm',
-                        backdrop: 'static',
-                        size: 'lg',
-                        resolve: {
-                            entity: function () {
-                                return {
-                                    cervesaName: null,
-                                    tipo: null,
-                                    fabricante: null,
-                                    pais: null,
-                                    graduacion: null,
-                                    foto: null,
-                                    fotoContentType: null,
-                                    id: null,
-                                };
-                            },
-                            translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
-                                $translatePartialLoader.addPart('cervesa');
-                                $translatePartialLoader.addPart('global');
-                                return $translate.refresh();
-                            }]
-                        }
-                    })
-
-                    /*    .result.then(function() {
-                        $state.go('cervesa', null, { reload: true });
-                    }, function() {
-                        $state.go('cervesa');
-                    })*/
-                    ;
-                }]
+                views: {
+                    'content@': {
+                        templateUrl: 'app/busca/busca.html',
+                        controller: 'CervesaController',
+                        controllerAs: 'vm'
+                    }
+                },
+                resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('cervesa');
+                        $translatePartialLoader.addPart('global');
+                        return $translate.refresh();
+                    }]
+                }
             });
+
     }
 
 })();

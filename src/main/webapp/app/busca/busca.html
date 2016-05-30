@@ -1,21 +1,22 @@
 Cervezas:
-<input type="text" ng-model="consultaBu" ng-change="getAllBuCervesas"/>
+<input type="text" ng-model="buCervesas" ng-change="getBuCervesas()"/>
 
 <div class="table-responsive">
     <table class="table table-striped">
         <thead>
+
         <tr>
             <td>Foto</td>
-            <td>Nombre</td>
-            <td>Tipo</td>
-
+            <td ng-click="filtrarPor('+vm.cervesaName')">Nombre</td>
+            <td ng-click="filtrarPor('+vm.tipo')">Tipo</td>
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="cervesa in cervesas | filter:consultaBu">
-            <td>{{cervesa.foto}}</td>
-            <td>{{cervesa.cervesaName}}</td>
-            <td>{{cervesa.tipo}}</td>
+        <tr ng-repeat="c in vm.cervesas | filter: buCervesas | orderBy:filtracion">
+            <td><img data-ng-src="{{'data:image/*;base64,' + c.foto}}" style="max-height: 30px;" ng-if="c.foto"/>
+                {{byteSize(c.foto)}}</td>
+            <td>{{c.cervesaName}}</td>
+            <td>{{c.tipo}}</td>
         </tr>
         </tbody>
     </table>

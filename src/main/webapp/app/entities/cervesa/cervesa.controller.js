@@ -49,7 +49,17 @@
                 //});
             });
         };
+        vm.getBuCervesas = function () {
+            Cervesa.consultaBu({consultaBu: vm.buCervesas}, function (response) {
 
+                vm.cervesas = response;
+
+            });
+        };
+
+        vm.filtrarPor = function (filtro) {
+            vm.filtracion = filtro;
+        };
 
         vm.reset = function() {
             vm.page = 0;
@@ -64,6 +74,8 @@
         vm.loadAll();
 
         vm.getTopCervezas();
+        vm.getBuCervesas();
+
 /**/
     }
 })();
