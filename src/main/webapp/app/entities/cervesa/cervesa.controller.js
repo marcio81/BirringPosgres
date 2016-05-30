@@ -50,11 +50,15 @@
             });
         };
         vm.getBuCervesas = function () {
-            Cervesa.consultaBu({consultaBu: vm.bucervesas}, function (response) {
+            Cervesa.consultaBu({consultaBu: vm.buCervesas}, function (response) {
 
                 vm.cervesas = response;
 
             });
+        };
+
+        vm.filtrarPor = function (filtro) {
+            vm.filtracion = filtro;
         };
 
         vm.reset = function() {
@@ -71,7 +75,7 @@
 
         vm.getTopCervezas();
         vm.getBuCervesas();
-       
+
 /**/
     }
 })();
