@@ -138,8 +138,8 @@
                 });
             }]
         })
-       
-            
+
+
         //TOP 10
             .state('top10', {
                 parent: 'app',
@@ -175,6 +175,13 @@
                         controller: 'CervesaController',
                         controllerAs: 'vm'
                     }
+                },
+                resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('cervesa');
+                        $translatePartialLoader.addPart('global');
+                        return $translate.refresh();
+                    }]
                 }
             });
 
