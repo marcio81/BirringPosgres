@@ -131,7 +131,37 @@
                     $state.go('^');
                 });
             }]
-        });
+        })
+            // CREAR PRECIO COGIENDO EL ID DE LA CERVEZA
+            .state('nuevoprecio', {
+                parent: 'cervesa',
+                url: '/{idCerveza}/newPrecio',
+                data: {
+                    authorities: ['ROLE_USER']
+                },
+                onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                    $uibModal.open({
+                        templateUrl: 'app/entities/precio/precio-dialog2.html',
+                        controller: 'PrecioDialogController',
+                        controllerAs: 'vm',
+                        backdrop: 'static',
+                        size: 'lg',
+                        resolve: {
+                            entity: function () {
+                                return {
+                                    precio: null,
+                                    id: null,
+                                    cervesa: $stateParams.idCerveza
+                                };
+                            }
+                        }
+                    }).result.then(function() {
+                        $state.go('precio', null, { reload: true });
+                    }, function() {
+                        $state.go('precio');
+                    });
+                }]
+            });
     }
 
 })();

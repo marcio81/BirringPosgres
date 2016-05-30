@@ -2,8 +2,10 @@ package com.mycompany.myapp.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.mycompany.myapp.domain.Cervesa;
+import com.mycompany.myapp.domain.Precio;
 import com.mycompany.myapp.repository.CervesaRepository;
 import com.mycompany.myapp.repository.EvaluarRepository;
+import com.mycompany.myapp.repository.PrecioRepository;
 import com.mycompany.myapp.web.rest.dto.Top10DTO;
 import com.mycompany.myapp.web.rest.util.HeaderUtil;
 import com.mycompany.myapp.web.rest.util.PaginationUtil;
@@ -40,6 +42,8 @@ public class CervesaResource {
     @Inject
     private EvaluarRepository evaluarRepository;
 
+    @Inject
+    private PrecioRepository precioRepository;
     /**
      * POST  /cervesas : Create a new cervesa.
      *
