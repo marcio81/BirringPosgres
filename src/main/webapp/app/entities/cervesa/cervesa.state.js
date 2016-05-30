@@ -162,7 +162,7 @@
                     }]
                 }
             })
-            //Buscador
+            //Buscadorsad
             .state('busca', {
                 parent: 'app',
                 url: '/buscacervesas',
