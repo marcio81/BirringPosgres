@@ -36,8 +36,6 @@
                 Ubicacion.save(vm.ubicacion, onSaveSuccess, onSaveError);
             }
         };
-// Google MAPS
-      
 
 
     }
