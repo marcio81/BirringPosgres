@@ -21,7 +21,7 @@
             'update': { method:'PUT' },
             'consultaTop': {
                 method: 'GET',
-                isArray: false,
+                isArray: true,
                 url:'api/topcervesas'
             },
             'consultaBu': {

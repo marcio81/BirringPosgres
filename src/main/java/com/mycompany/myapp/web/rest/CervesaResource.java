@@ -6,6 +6,7 @@ import com.mycompany.myapp.domain.Precio;
 import com.mycompany.myapp.repository.CervesaRepository;
 import com.mycompany.myapp.repository.EvaluarRepository;
 import com.mycompany.myapp.repository.PrecioRepository;
+import com.mycompany.myapp.web.rest.dto.CervezaDTO;
 import com.mycompany.myapp.web.rest.dto.Top10DTO;
 import com.mycompany.myapp.web.rest.util.HeaderUtil;
 import com.mycompany.myapp.web.rest.util.PaginationUtil;
@@ -24,6 +25,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.inject.Inject;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -192,18 +194,21 @@ public class CervesaResource {
         method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<Top10DTO> getTopCervesas(Pageable pageable)
+    public ResponseEntity<List<CervezaDTO>> getTopCervesas(Pageable pageable)
         throws URISyntaxException {
         Pageable topTen = new PageRequest(0, 10);
         log.debug("REST request to get a page of Cervesas");
 
         Page<Object[]> page = evaluarRepository.findTop10(topTen);
 
-        Top10DTO top10DTO = new Top10DTO();// DTO: transferir datos
-        top10DTO.setCervezas(page.getContent());
+        List<CervezaDTO> cervezaDTOs = new ArrayList<>();
+
+        page.getContent()
+            .forEach(cerveza -> cervezaDTOs.add(new CervezaDTO((Long) cerveza[0],(String)cerveza[1],(byte[]) cerveza[2],(Double) cerveza[3])) );
+
 
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/topcervesas");
-        return new ResponseEntity<>(top10DTO, headers, HttpStatus.OK);
+        return new ResponseEntity<>(cervezaDTOs, headers, HttpStatus.OK);
     }
 // BUSCADOR
     @RequestMapping(value = "/buscacervesas/{cervesaName}",
