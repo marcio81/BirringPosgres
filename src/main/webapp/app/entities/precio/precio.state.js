@@ -147,13 +147,27 @@
                         backdrop: 'static',
                         size: 'lg',
                         resolve: {
-                            entity: function () {
+                            /*entity: function () {
                                 return {
                                     precio: null,
                                     id: null,
                                     cervesa: $stateParams.idCerveza
+                                   // cervesa: Cervesa.get({id : $stateParams.idCerveza})
                                 };
-                            }
+                            }*/
+                            translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                                $translatePartialLoader.addPart('precio');
+                                return $translate.refresh();
+                            }],
+                            entity: ['Cervesa', function(Cervesa) {
+                                return {
+                                    precio: null,
+                                    id: null,
+                                    //cervesa: $stateParams.idCerveza
+                                    cervesa: Cervesa.get({id : $stateParams.idCerveza})
+                                };
+                            }]
+
                         }
                     }).result.then(function() {
                         $state.go('precio', null, { reload: true });

@@ -48,6 +48,7 @@
             resolve: {
                 translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                     $translatePartialLoader.addPart('cervesa');
+                    $translatePartialLoader.addPart('precio');
                     return $translate.refresh();
                 }],
                 entity: ['$stateParams', 'Cervesa', function($stateParams, Cervesa) {
