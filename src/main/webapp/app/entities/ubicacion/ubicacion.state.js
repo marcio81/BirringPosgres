@@ -138,6 +138,7 @@
             }]
         })
 
+            
             //CREAR UBICACION COGIENDO EL ID DE LA CERVEZA
 
             .state('nuevaubicacion', {
