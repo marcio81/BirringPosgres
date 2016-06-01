@@ -21,9 +21,11 @@
                     templateUrl: 'app/entities/ubicacion/ubicacions.html',
                     controller: 'UbicacionController',
                     controllerAs: 'vm'
+
                 }
             },
             resolve: {
+
                 translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                     $translatePartialLoader.addPart('ubicacion');
                     $translatePartialLoader.addPart('global');
@@ -146,7 +148,7 @@
                 },
                 onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                     $uibModal.open({
-                        templateUrl: 'app/entities/ubicacion/ubicacion-dialog2.html',
+                        templateUrl: 'app/entities/ubicacion/ubicacion-dialog.html',
                         controller: 'UbicacionDialogController',
                         controllerAs: 'vm',
                         backdrop: 'static',
@@ -183,37 +185,7 @@
                     });
                 }]
             })
-            .state('crearmapa', {
-                parent: 'ubicacion',
-                url: '/new',
-                data: {
-                    authorities: ['ROLE_USER']
-                },
-                onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
-                    $uibModal.open({
-                        templateUrl: 'app/entities/ubicacion/ubicacion-dialog2.html',
-                        controller: 'MapaController',
-                        controllerAs: 'vm',
-                        backdrop: 'static',
-                        size: 'lg',
-                        resolve: {
-                            entity: function () {
-                                return {
-                                    ubiName: null,
-                                    direccion: null,
-                                    longitud: null,
-                                    latitud: null,
-                                    id: null
-                                };
-                            }
-                        }
-                    }).result.then(function() {
-                        $state.go('ubicacion', null, { reload: true });
-                    }, function() {
-                        $state.go('ubicacion');
-                    });
-                }]
-            });
+
     }
 
 })();

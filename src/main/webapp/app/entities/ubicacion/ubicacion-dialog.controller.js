@@ -5,9 +5,9 @@
         .module('jhipsterApp')
         .controller('UbicacionDialogController', UbicacionDialogController);
 
-    UbicacionDialogController.$inject = ['$scope', '$stateParams', '$uibModalInstance', 'entity', 'Ubicacion', 'Precio', 'Cervesa'];
+    UbicacionDialogController.$inject = ['$scope', '$stateParams', '$uibModalInstance', 'entity', 'Ubicacion', 'Precio', 'Cervesa','NgMap'];
 
-    function UbicacionDialogController ($scope, $stateParams, $uibModalInstance, entity, Ubicacion, Precio, Cervesa) {
+    function UbicacionDialogController ($scope, $stateParams, $uibModalInstance, entity, Ubicacion, Precio, Cervesa, NgMap) {
         var vm = this;
         vm.ubicacion = entity;
         vm.precios = Precio.query();
@@ -17,7 +17,15 @@
                 vm.ubicacion = result;
             });
         };
-
+        vm.types = "['establishment']";
+        vm.placeChanged = function() {
+            vm.place = this.getPlace();
+            console.log('location', vm.place.geometry.location);
+            vm.map.setCenter(vm.place.geometry.location);
+        }
+        NgMap.getMap().then(function(map) {
+            vm.map = map;
+        });
         var onSaveSuccess = function (result) {
             $scope.$emit('jhipsterApp:ubicacionUpdate', result);
             $uibModalInstance.close(result);

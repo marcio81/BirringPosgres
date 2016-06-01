@@ -13,6 +13,8 @@
         vm.predicate = 'id';
         vm.reverse = true;
         vm.page = 0;
+
+
         vm.loadAll = function() {
             Ubicacion.query({
                 page: vm.page,
