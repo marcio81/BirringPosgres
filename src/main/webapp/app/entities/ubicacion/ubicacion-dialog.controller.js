@@ -45,6 +45,8 @@
             }
         };
 
-
+        vm.clear = function() {
+            $uibModalInstance.dismiss('cancel');
+        };
     }
 })();

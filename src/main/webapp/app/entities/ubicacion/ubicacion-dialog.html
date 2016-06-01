@@ -1,5 +1,4 @@
 
-
 <form name="editForm" role="form" novalidate ng-submit="vm.save()">
 
     <div class="modal-header">
@@ -12,31 +11,31 @@
         <div class="form-group">
             <label for="id" translate="global.field.id">ID</label>
             <input type="text" class="form-control" id="id" name="id"
-                    ng-model="vm.ubicacion.id" readonly />
+                   ng-model="vm.ubicacion.id" readonly />
         </div>
         <div class="form-group">
             <label class="control-label" translate="jhipsterApp.ubicacion.ubiName" for="field_ubiName">UbiName</label>
             <input type="text" class="form-control" name="ubiName" id="field_ubiName"
-                    ng-model="vm.ubicacion.ubiName"
-                     />
+                   ng-model="vm.ubicacion.ubiName"
+            />
         </div>
         <div class="form-group">
             <label class="control-label" translate="jhipsterApp.ubicacion.direccion" for="field_direccion">Direccion</label>
             <input type="text" class="form-control" name="direccion" id="field_direccion"
-                    ng-model="vm.ubicacion.direccion"
-                     />
+                   ng-model="vm.ubicacion.direccion"
+            />
         </div>
         <div class="form-group">
             <label class="control-label" translate="jhipsterApp.ubicacion.longitud" for="field_longitud">Longitud</label>
             <input type="number" class="form-control" name="longitud" id="field_longitud"
-                    ng-model="vm.ubicacion.longitud"
-                     />
+                   ng-model="vm.ubicacion.longitud"
+            />
         </div>
         <div class="form-group">
             <label class="control-label" translate="jhipsterApp.ubicacion.latitud" for="field_latitud">Latitud</label>
             <input type="number" class="form-control" name="latitud" id="field_latitud"
-                    ng-model="vm.ubicacion.latitud"
-                     />
+                   ng-model="vm.ubicacion.latitud"
+            />
         </div>
 
         <div class="form-group">
@@ -62,8 +61,6 @@
         address : {{vm.address}}
         <ng-map></ng-map>
     </div>
-
-
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
             <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
