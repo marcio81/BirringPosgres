@@ -134,7 +134,86 @@
                     $state.go('^');
                 });
             }]
-        });
+        })
+
+            //CREAR UBICACION COGIENDO EL ID DE LA CERVEZA
+
+            .state('nuevaubicacion', {
+                parent: 'ubicacion',
+                url: '/{idCerveza}/newUbicacion',
+                data: {
+                    authorities: ['ROLE_USER']
+                },
+                onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                    $uibModal.open({
+                        templateUrl: 'app/entities/ubicacion/ubicacion-dialog2.html',
+                        controller: 'UbicacionDialogController',
+                        controllerAs: 'vm',
+                        backdrop: 'static',
+                        size: 'lg',
+                        resolve: {
+                            translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                                $translatePartialLoader.addPart('ubicacion');
+                                return $translate.refresh();
+                            }],
+                        /*    entity: function () {
+                                return {
+                                    ubiName: null,
+                                    direccion: null,
+                                    longitud: null,
+                                    latitud: null,
+                                    id: null
+                                };
+                            }*/
+                            entity: ['Cervesa', function(Cervesa) {
+                                return {
+                                    ubiName: null,
+                                    direccion: null,
+                                    longitud: null,
+                                    latitud: null,
+                                    id: null,
+                                    cervesa: Cervesa.get({id : $stateParams.idCerveza})
+                                };
+                            }]
+                        }
+                    }).result.then(function() {
+                        $state.go('ubicacion', null, { reload: true });
+                    }, function() {
+                        $state.go('ubicacion');
+                    });
+                }]
+            })
+            .state('crearmapa', {
+                parent: 'ubicacion',
+                url: '/new',
+                data: {
+                    authorities: ['ROLE_USER']
+                },
+                onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                    $uibModal.open({
+                        templateUrl: 'app/entities/ubicacion/ubicacion-dialog2.html',
+                        controller: 'MapaController',
+                        controllerAs: 'vm',
+                        backdrop: 'static',
+                        size: 'lg',
+                        resolve: {
+                            entity: function () {
+                                return {
+                                    ubiName: null,
+                                    direccion: null,
+                                    longitud: null,
+                                    latitud: null,
+                                    id: null
+                                };
+                            }
+                        }
+                    }).result.then(function() {
+                        $state.go('ubicacion', null, { reload: true });
+                    }, function() {
+                        $state.go('ubicacion');
+                    });
+                }]
+            });
     }
 
 })();

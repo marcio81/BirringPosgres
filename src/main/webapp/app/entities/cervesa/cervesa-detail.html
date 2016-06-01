@@ -48,10 +48,18 @@
             class="btn btn-info">
         <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
     </button>
+    <!-- Añadir un precio a la cerveza seleccionada -->
     <button class="btn btn-primary" ui-sref="nuevoprecio({idCerveza:vm.cervesa.id})" >
         <span class="glyphicon glyphicon-plus"></span>
                     <span  translate="jhipsterApp.precio.home.createLabel">
                         Create new Precio
+                    </span>
+    </button>
+    <!-- Añadir una ubicacion a la cerveza seleccionada -->
+    <button class="btn btn-primary" ui-sref="nuevaubicacion({idCerveza:vm.cervesa.id})" >
+        <span class="glyphicon glyphicon-plus"></span>
+                    <span  translate="jhipsterApp.ubicacion.home.createLabel">
+                        Create new Ubicacion
                     </span>
     </button>
 </div>
