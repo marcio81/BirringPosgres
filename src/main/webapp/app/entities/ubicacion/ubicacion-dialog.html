@@ -42,6 +42,8 @@
             <label translate="jhipsterApp.ubicacion.cervesa" for="field_cervesa">cervesa</label>
             <select class="form-control" id="field_cervesa" multiple name="cervesa" ng-model="vm.ubicacion.cervesas" ng-options="cervesa as cervesa.cervesaId for cervesa in vm.cervesas track by cervesa.id"></select>
         </div>
+        <!--  mapa -->
+
         Auto Complete Type:
         <select ng-model="vm.types">
             <option value="['geocode']">Geodode</option>
@@ -53,13 +55,13 @@
                ng-model="vm.address"
                types="{{types}}"
                on-place-changed="vm.placeChanged()" /> <br/>
-        <div ng-show="vm.place">
+        <div ng-show="vm.place" class="allMapa">
             Address = {{vm.place.formatted_address}} <br/>
             Location: {{vm.place.geometry.location}}<br/>
         </div>
         address : {{vm.address}}
         <ng-map></ng-map>
-    </div>
+        </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
             <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
@@ -69,3 +71,11 @@
         </button>
     </div>
 </form>
+<!-- ES NECESARIO EL Z-INDEX PARA QUE SE MUESTRE POR ENCIMA EL DROPDOWN:
+ pac-container is the class used to create the element for the dropdown when using Google Maps Autocomplete control.
+  Since it is generated dynamically via the autocomplete element you setup, you don't specify it anywhere.  -->
+<style>
+    .pac-container{
+        z-index: 2000000;
+    }
+</style>
