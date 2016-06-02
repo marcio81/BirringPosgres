@@ -23,32 +23,32 @@
         </div>
     </div>
     <br/>
-    <div class="table-responsive">
-        <table class="jh-table table table-striped">
+    <div class="table-users">
+        <table cellspacing="0">
             <thead>
             <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.reset()">
-                <th jh-sort-by="id"><span translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                <th jh-sort-by="foto"><span translate="jhipsterApp.cervesa.foto">Foto</span> <span class="glyphicon glyphicon-sort"></span></th>
                 <th jh-sort-by="cervesaName"><span translate="jhipsterApp.cervesa.cervesaName">CervesaName</span> <span class="glyphicon glyphicon-sort"></span></th>
                 <th jh-sort-by="tipo"><span translate="jhipsterApp.cervesa.tipo">Tipo</span> <span class="glyphicon glyphicon-sort"></span></th>
                 <th jh-sort-by="fabricante"><span translate="jhipsterApp.cervesa.fabricante">Fabricante</span> <span class="glyphicon glyphicon-sort"></span></th>
                 <th jh-sort-by="pais"><span translate="jhipsterApp.cervesa.pais">Pais</span> <span class="glyphicon glyphicon-sort"></span></th>
                 <th jh-sort-by="graduacion"><span translate="jhipsterApp.cervesa.graduacion">Graduacion</span> <span class="glyphicon glyphicon-sort"></span></th>
-                <th jh-sort-by="foto"><span translate="jhipsterApp.cervesa.foto">Foto</span> <span class="glyphicon glyphicon-sort"></span></th>
+                <th jh-sort-by="id"><span translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
                 <th></th>
             </tr>
             </thead>
             <tbody infinite-scroll="vm.loadPage(vm.page + 1)" infinite-scroll-disabled="vm.page >= vm.links['last']">
             <tr ng-repeat="cervesa in vm.cervesas track by cervesa.id">
-                <td><a ui-sref="cervesa-detail({id:cervesa.id})">{{cervesa.id}}</a></td>
-                <td>{{cervesa.cervesaName}}</td>
+                <td><a ui-sref="cervesa-detail({id:cervesa.id})"><img data-ng-src="{{'data:image/*;base64,' + cervesa.foto}}" style="max-height: 30px;" ng-if="cervesa.foto"/>
+                    {{byteSize(cervesa.foto)}}</a></td>
+                <!-- <a ng-click="vm.openFile(cervesa.fotoContentType, cervesa.foto)" ng-if="cervesa.foto" target="_blank">open</a>
+                  {{cervesa.fotoContentType}}, {{byteSize(cervesa.foto)}}</td>-->
+                <td><a ui-sref="cervesa-detail({id:cervesa.id})">{{cervesa.cervesaName}}</a></td>
                 <td>{{cervesa.tipo}}</td>
                 <td>{{cervesa.fabricante}}</td>
                 <td>{{cervesa.pais}}</td>
                 <td>{{cervesa.graduacion}}</td>
-                <td> <img data-ng-src="{{'data:image/*;base64,' + cervesa.foto}}" style="max-height: 30px;" ng-if="cervesa.foto"/>
-                    {{byteSize(cervesa.foto)}}</td>
-                  <!-- <a ng-click="vm.openFile(cervesa.fotoContentType, cervesa.foto)" ng-if="cervesa.foto" target="_blank">open</a>
-                    {{cervesa.fotoContentType}}, {{byteSize(cervesa.foto)}}</td>-->
+                <td>{{cervesa.id}}</td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"
