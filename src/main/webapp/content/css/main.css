@@ -264,7 +264,7 @@ ul#strengthBar {
     outline: none;
 }
 #backgroundBeer {
-    background:url("../images/beer.jpg");
+    background-color: black;
 
 }
 /* end of ui bootstrap tweaks */

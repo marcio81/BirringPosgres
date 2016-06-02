@@ -1,4 +1,4 @@
-<div class="table-responsive">
+<div class="table-users">
     <table class="table table-striped">
         <thead>
         <tr>
@@ -22,9 +22,9 @@
 
         <tbody>
             <tr ng-repeat="cervesa in vm.topCervesas">
-                <td> <img data-ng-src="{{'data:image/*;base64,' + cervesa.foto}}" style="max-height: 30px;" ng-if="cervesa.foto"/>
-                    {{byteSize(cervesa.foto)}}</td>
-                <td>{{cervesa.cervesaName}}</td>
+                <td><a ui-sref="cervesa-detail({id:cervesa.id})"><img data-ng-src="{{'data:image/*;base64,' + cervesa.foto}}" style="max-height: 30px;" ng-if="cervesa.foto"/>
+                    {{byteSize(cervesa.foto)}}</a></td>
+                <td><a ui-sref="cervesa-detail({id:cervesa.id})">{{cervesa.cervesaName}}</a></td>
                 <td>{{cervesa.mediaEvaluacion}}</td>
             </tr>
         </tbody>
