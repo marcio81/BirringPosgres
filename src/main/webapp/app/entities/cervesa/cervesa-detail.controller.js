@@ -22,5 +22,14 @@
 
         vm.byteSize = DataUtils.byteSize;
         vm.openFile = DataUtils.openFile;
+
+        <!--COMENTARIO-->
+        vm.getComentCervesas = function () {
+            Comentario.comenta({comenta: vm.comentCervesas}, function (response) {
+
+                vm.comentarios = response;
+
+            });
+        };
     }
 })();

@@ -1,9 +1,9 @@
 package com.mycompany.myapp.repository;
 
 import com.mycompany.myapp.domain.Comentario;
-
+import com.mycompany.myapp.domain.Cervesa;
 import org.springframework.data.jpa.repository.*;
-
+import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 /**
@@ -13,6 +13,6 @@ public interface ComentarioRepository extends JpaRepository<Comentario,Long> {
 
     @Query("select comentario from Comentario comentario where comentario.user.login = ?#{principal.username}")
     List<Comentario> findByUserIsCurrentUser();
-    //@Query("SELECT c.comentario, c.cervesa.id FROM Comentario c where comentario.id = ?#(cervesa.comentario)")
-    //List<Object[]> findComentario();
+    @Query("SELECT comentario, cervesa FROM Comentario  where cervesa = :cervesaid")
+    List<Comentario> findComentario(@Param("cervesaid") Long cervesaid);
 }

@@ -184,8 +184,32 @@
                         return $translate.refresh();
                     }]
                 }
-            });
-
+            })
+        //Comentarios
+    .state('comentarios', {
+            parent: 'app',
+            url: '/comentarios/{id}',
+            data: {
+                authorities: ['ROLE_USER']
+            },
+            views: {
+                'content@': {
+                    templateUrl: 'app/entities/cervesa/cervesa-detail.html',
+                    controller: 'CervesaDetailController',
+                    controllerAs: 'vm'
+                }
+            },
+            resolve: {
+                translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                    $translatePartialLoader.addPart('cervesa');
+                    $translatePartialLoader.addPart('global');
+                    return $translate.refresh();
+                }],
+                entity: ['$stateParams', 'Cervesa', function($stateParams, Cervesa) {
+                    return Cervesa.get({id : $stateParams.id});
+                }]
+            }
+        });
     }
 
 })();

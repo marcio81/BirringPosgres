@@ -1,8 +1,11 @@
 
-<div>
+<div class="perfil">
+    <div class="imagemPerfil"><img data-ng-src="{{'data:image/*;base64,' + vm.cervesa.foto}}" style="max-height: 100%;" ng-if="vm.cervesa.foto"/>
+        {{byteSize(vm.cervesa.foto)}}</a></div>
     <h2><span translate="jhipsterApp.cervesa.detail.title">Cervesa </span>{{vm.cervesa.cervesaName}}</h2>
     <hr>
     <dl class="dl-horizontal">
+        <hr>
         <dt><span translate="jhipsterApp.cervesa.cervesaName">CervesaName</dt></dt>
         <dd>
             <span>{{vm.cervesa.cervesaName}}<span>
@@ -27,21 +30,24 @@
         <dd>
             <span>{{vm.cervesa.graduacion}}<span>
         </dd>
-        <hr>
-        <dt><span translate="jhipsterApp.cervesa.foto">Foto</dt></dt>
-        <dd>
-            <a ng-click="vm.openFile(vm.cervesa.fotoContentType, vm.cervesa.foto)" ng-if="vm.cervesa.foto" target="_blank">open</a>
-            <div>{{vm.cervesa.fotoContentType}}, {{vm.byteSize(vm.cervesa.foto)}}</div>
-        </dd>
+
         <hr>
 
-        <dt><span translate="jhipsterApp.cervesa.comentario">Comentario</dt></dt>
-        <dd>
-            <span>{{vm.cervesa.comentario}}</span>
-        </dd>
-        <hr>
+<!--COMENTARIO-->
 
     </dl>
+    <div   ng-model="comentCervesas" ng-change="getComentCervesas()">
+    <h3>Comentarios</h3>
+    <table >
+        <tbody>
+        <tr ng-repeat="comentario in vm.cervesas track by cervesa.id">
+        <th translate="jhipsterApp.cervesa.comentario">Comentario</th>
+        <td>{{vm.cervesa.comentario}}</td>
+        </tr>
+        </tbody>
+    </table>
+    </div>
+<!-- END COMENTARIO-->
 
     <button type="submit"
             onclick="window.history.back()"

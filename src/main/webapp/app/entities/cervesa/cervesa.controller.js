@@ -56,6 +56,7 @@
 
             });
         };
+       
 
         vm.filtrarPor = function (filtro) {
             vm.filtracion = filtro;

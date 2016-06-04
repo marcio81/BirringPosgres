@@ -2,10 +2,12 @@ package com.mycompany.myapp.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.mycompany.myapp.domain.Cervesa;
+import com.mycompany.myapp.domain.Comentario;
 import com.mycompany.myapp.domain.Precio;
 import com.mycompany.myapp.repository.CervesaRepository;
 import com.mycompany.myapp.repository.EvaluarRepository;
 import com.mycompany.myapp.repository.PrecioRepository;
+import com.mycompany.myapp.repository.ComentarioRepository;
 import com.mycompany.myapp.web.rest.dto.CervezaDTO;
 import com.mycompany.myapp.web.rest.dto.Top10DTO;
 import com.mycompany.myapp.web.rest.util.HeaderUtil;
@@ -46,6 +48,8 @@ public class CervesaResource {
 
     @Inject
     private PrecioRepository precioRepository;
+    @Inject
+    private ComentarioRepository comentarioRepository;
     /**
      * POST  /cervesas : Create a new cervesa.
      *
@@ -222,5 +226,16 @@ public class CervesaResource {
 
         return new ResponseEntity<>(cerva, HttpStatus.OK);
     }
+    // Comentario
+    @RequestMapping(value = "/comentarios/{{id}}",
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public ResponseEntity<List<Comentario>> getComentCervesas(@PathVariable Long id)
+        throws URISyntaxException {
+        log.debug("REST request to get Comentario: {}");
+        List<Comentario> coment = comentarioRepository.findComentario(id);
 
+        return new ResponseEntity<>(coment, HttpStatus.OK);
+    }
 }

@@ -13,11 +13,11 @@ Cervezas:
         </tr>
         </thead>
         <tbody infinite-scroll="vm.loadPage(vm.page + 1)" infinite-scroll-disabled="vm.page >= vm.links['last']">
-        <tr ng-repeat="c in vm.cervesas | filter: buCervesas | orderBy:filtracion">
-            <td><a ui-sref="cervesa-detail({id:cervesa.id})"><img data-ng-src="{{'data:image/*;base64,' + c.foto}}" style="max-height: 30px;" ng-if="c.foto"/>
-                {{byteSize(c.foto)}}</a></td>
-            <td><a ui-sref="cervesa-detail({id:cervesa.id})">{{c.cervesaName}}</a></td>
-            <td>{{c.tipo}}</td>
+        <tr ng-repeat="cervesa in vm.cervesas | filter: buCervesas | orderBy:filtracion">
+            <td><a ui-sref="cervesa-detail({id:cervesa.id})"><img data-ng-src="{{'data:image/*;base64,' + cervesa.foto}}" style="max-height: 30px;" ng-if="cervesa.foto"/>
+                {{byteSize(cervesa.foto)}}</a></td>
+            <td><a ui-sref="cervesa-detail({id:cervesa.id})">{{cervesa.cervesaName}}</a></td>
+            <td>{{cervesa.tipo}}</td>
         </tr>
         </tbody>
     </table>
