@@ -22,6 +22,8 @@
             vm.place = this.getPlace();
             console.log('location', vm.place.geometry.location);
             vm.map.setCenter(vm.place.geometry.location);
+            vm.ubicacion.latitud = vm.place.geometry.location.lat()
+            vm.ubicacion.longitud = vm.place.geometry.location.lng()
         }
         NgMap.getMap().then(function(map) {
             vm.map = map;
