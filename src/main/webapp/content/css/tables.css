@@ -15,19 +15,19 @@ body * {
 }
 
 table img {
-    border-radius: 50%;
+   /* border-radius: 50%;*/
     height: 60px;
     width: 60px;
 }
 
 .table-users {
-    border: 1px solid #327a81;
+    /*border: 1px solid #327a81;
     border-radius: 10px;
-    box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.1);
-    max-width: calc(100% - 2em);
+    box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.1);*/
+    max-width: calc(100%);
     margin: 1em auto;
     overflow: hidden;
-    width: 80%;
+    width: 100%;
 }
 
 table {
@@ -339,3 +339,43 @@ table tr:nth-child(2n+1) {
 
 }
 
+/*Slider*/
+.containers {
+    margin: 50px auto;
+    width: 80%;
+    height: 400px;
+    overflow: hidden;
+
+    position: relative;
+}
+
+.photo {
+    width: 100%;
+    position: absolute;
+    animation: round 16s infinite;
+    opacity: 0;
+}
+
+@keyframes round {
+    25% {
+        opacity: 1;
+    }
+    40% {
+        opacity: 0;
+    }
+}
+img:nth-child(1) {
+    animation-delay: 12s;
+}
+
+img:nth-child(2) {
+    animation-delay: 8s;
+}
+
+img:nth-child(3) {
+    animation-delay: 4s;
+}
+
+img:nth-child(4) {
+    animation-delay: 0s;
+}
