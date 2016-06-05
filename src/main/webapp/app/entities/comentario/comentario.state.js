@@ -135,7 +135,8 @@
             //Crear comentario pasando la id de cerveza y el usuario
             .state('nuevocomentario', {
                 parent: 'home',
-                url: '/{idCerveza}/{idUser}/newComentario',
+                url: '/{idCerveza}/newComentario',
+                // url: '/{idCerveza}/{idUser}/newComentario',
                 data: {
                     authorities: ['ROLE_USER']
                 },
@@ -153,12 +154,20 @@
                                     id: null
                                 };
                             }*/
-                            entity: ['Cervesa','User', function(Cervesa,User) {
+                           /* entity: ['Cervesa','User', function(Cervesa,User) {
                                 return {
                                     comentario: null,
                                     id: null,
                                     cervesa: Cervesa.get({id : $stateParams.idCerveza}),
                                     user: User.get({login : $stateParams.idUser})
+                                };
+                            }]*/
+                            entity: ['Cervesa', function(Cervesa) {
+                                return {
+                                    comentario: null,
+                                    id: null,
+                                    cervesa: Cervesa.get({id : $stateParams.idCerveza})
+                                   
                                 };
                             }]
                         }

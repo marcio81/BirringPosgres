@@ -2,7 +2,10 @@ package com.mycompany.myapp.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.mycompany.myapp.domain.Comentario;
+import com.mycompany.myapp.domain.User;
 import com.mycompany.myapp.repository.ComentarioRepository;
+import com.mycompany.myapp.repository.UserRepository;
+import com.mycompany.myapp.security.SecurityUtils;
 import com.mycompany.myapp.web.rest.util.HeaderUtil;
 import com.mycompany.myapp.web.rest.util.PaginationUtil;
 import org.slf4j.Logger;
@@ -34,6 +37,9 @@ ComentarioResource {
     @Inject
     private ComentarioRepository comentarioRepository;
 
+    @Inject
+    private UserRepository userRepository;
+
     /**
      * POST  /comentarios : Create a new comentario.
      *
@@ -50,6 +56,9 @@ ComentarioResource {
         if (comentario.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("comentario", "idexists", "A new comentario cannot already have an ID")).body(null);
         }
+        User user = userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).get();
+        comentario.setUser(user);
+
         Comentario result = comentarioRepository.save(comentario);
         return ResponseEntity.created(new URI("/api/comentarios/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert("comentario", result.getId().toString()))

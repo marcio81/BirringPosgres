@@ -2,7 +2,10 @@ package com.mycompany.myapp.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.mycompany.myapp.domain.Precio;
+import com.mycompany.myapp.domain.User;
 import com.mycompany.myapp.repository.PrecioRepository;
+import com.mycompany.myapp.repository.UserRepository;
+import com.mycompany.myapp.security.SecurityUtils;
 import com.mycompany.myapp.web.rest.util.HeaderUtil;
 import com.mycompany.myapp.web.rest.util.PaginationUtil;
 import org.slf4j.Logger;
@@ -29,10 +32,13 @@ import java.util.Optional;
 public class PrecioResource {
 
     private final Logger log = LoggerFactory.getLogger(PrecioResource.class);
-        
+
     @Inject
     private PrecioRepository precioRepository;
-    
+
+    @Inject
+    private UserRepository userRepository;
+
     /**
      * POST  /precios : Create a new precio.
      *
@@ -49,6 +55,10 @@ public class PrecioResource {
         if (precio.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("precio", "idexists", "A new precio cannot already have an ID")).body(null);
         }
+
+        User user = userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).get();
+        precio.setUser(user);
+
         Precio result = precioRepository.save(precio);
         return ResponseEntity.created(new URI("/api/precios/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert("precio", result.getId().toString()))
@@ -93,7 +103,7 @@ public class PrecioResource {
     public ResponseEntity<List<Precio>> getAllPrecios(Pageable pageable)
         throws URISyntaxException {
         log.debug("REST request to get a page of Precios");
-        Page<Precio> page = precioRepository.findAll(pageable); 
+        Page<Precio> page = precioRepository.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/precios");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }

@@ -151,49 +151,6 @@ public class CervesaResource {
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert("cervesa", id.toString())).build();
     }
 
-
-
-
-    // NUEVO METODO GET TOP CERVEZAS
-    /*@RequestMapping(value = "/topcervesas",
-
-        method = RequestMethod.GET,
-        produces = MediaType.APPLICATION_JSON_VALUE)
-    @Timed
-    public ResponseEntity<List<Cervesa>> bombas2(@PathVariable Integer consultarTop) {//bombas2 lo pone en el swager Administation -> api no sirve
-
-        List<Cervesa> cervezas= cervesaRepository.TopCervezas(consultarTop); // TopCervezas es la query en el repository y le pasa 1 params
-
-        return new ResponseEntity<>(cervezas, HttpStatus.OK);
-
-    }*/
-
-    /*@RequestMapping(value = "/topcervesas",
-
-        method = RequestMethod.GET,
-        produces = MediaType.APPLICATION_JSON_VALUE)
-    @Timed
-    public ResponseEntity<List<Cervesa>> bombas2() {//bombas2 lo pone en el swager Administation -> api no sirve
-
-        List<Cervesa> cervezas= cervesaRepository.TopCervezas(); // TopCervezas es la query en el repository y le pasa 1 params
-
-        return new ResponseEntity<>(cervezas, HttpStatus.OK);
-
-    }*/
-
-    /*@RequestMapping(value = "/topcervesas",
-        method = RequestMethod.GET,
-        produces = MediaType.APPLICATION_JSON_VALUE)
-    @Timed
-    public ResponseEntity<List<Cervesa>> getTop10cervesa(Pageable pageable)//swagger
-        throws URISyntaxException {
-        Pageable topTen = new PageRequest(0, 10);
-        log.debug("REST request to get a page of ApuestaRealizadass");
-        Page<Cervesa> page = CervesaRepository.findByTopCervesas(topTen);
-        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/topcervesas");
-        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
-    }*/
-
     @RequestMapping(value = "/topcervesas",
         method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)
