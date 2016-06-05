@@ -49,6 +49,8 @@
                 translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                     $translatePartialLoader.addPart('cervesa');
                     $translatePartialLoader.addPart('precio');
+                    $translatePartialLoader.addPart('ubicacion');
+                    $translatePartialLoader.addPart('comentario');
                     return $translate.refresh();
                 }],
                 entity: ['$stateParams', 'Cervesa', function($stateParams, Cervesa) {
@@ -57,7 +59,7 @@
             }
         })
         .state('cervesa.new', {
-            parent: 'cervesa',
+            parent: 'home',
             url: '/new',
             data: {
                 authorities: ['ROLE_USER']
@@ -70,6 +72,10 @@
                     backdrop: 'static',
                     size: 'lg',
                     resolve: {
+                        translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                            $translatePartialLoader.addPart('cervesa');
+                            return $translate.refresh();
+                        }],
                         entity: function () {
                             return {
                                 cervesaName: null,
@@ -84,9 +90,9 @@
                         }
                     }
                 }).result.then(function() {
-                    $state.go('cervesa', null, { reload: true });
+                    $state.go('home', null, { reload: true });
                 }, function() {
-                    $state.go('cervesa');
+                    $state.go('home');
                 });
             }]
         })
@@ -185,6 +191,9 @@
                     }]
                 }
             })
+
+
+
         //Comentarios
     .state('comentarios', {
             parent: 'app',

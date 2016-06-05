@@ -8,7 +8,7 @@
     </div>
     <div class="modal-body">
         <!--<jhi-alert-error></jhi-alert-error>-->
-        <div class="form-group">
+        <div class="form-group ng-hide">
             <label for="id" translate="global.field.id">ID</label>
             <input type="text" class="form-control" id="id" name="id"
                     ng-model="vm.precio.id" readonly />
@@ -26,7 +26,7 @@
                 <option value=""></option>
             </select>
         </div>
-        <div class="form-group">
+        <div class="form-group ng-hide">
             <label translate="jhipsterApp.precio.cervesa" for="field_cervesa">cervesa</label>
            <!--<select class="form-control" id="field_cervesa" name="cervesa" ng-model="vm.precio.cervesa" ng-options="cervesa as cervesa.id for cervesa in vm.cervesas track by cervesa.id">
                 <option value="vm.cervesa.id"></option>

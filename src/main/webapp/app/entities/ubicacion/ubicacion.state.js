@@ -138,11 +138,11 @@
             }]
         })
 
-            
+
             //CREAR UBICACION COGIENDO EL ID DE LA CERVEZA
 
             .state('nuevaubicacion', {
-                parent: 'ubicacion',
+                parent: 'home',
                 url: '/{idCerveza}/newUbicacion',
                 data: {
                     authorities: ['ROLE_USER']
@@ -180,9 +180,9 @@
                             }]
                         }
                     }).result.then(function() {
-                        $state.go('ubicacion', null, { reload: true });
+                        $state.go('home', null, { reload: true });
                     }, function() {
-                        $state.go('ubicacion');
+                        $state.go('home');
                     });
                 }]
             })

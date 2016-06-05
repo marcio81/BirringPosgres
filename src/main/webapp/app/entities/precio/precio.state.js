@@ -134,7 +134,7 @@
         })
             // CREAR PRECIO COGIENDO EL ID DE LA CERVEZA
             .state('nuevoprecio', {
-                parent: 'cervesa',
+                parent: 'home',
                 url: '/{idCerveza}/newPrecio',
                 data: {
                     authorities: ['ROLE_USER']
@@ -170,9 +170,9 @@
 
                         }
                     }).result.then(function() {
-                        $state.go('precio', null, { reload: true });
+                        $state.go('home', null, { reload: true });
                     }, function() {
-                        $state.go('precio');
+                        $state.go('home');
                     });
                 }]
             });

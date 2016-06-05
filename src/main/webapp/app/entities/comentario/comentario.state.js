@@ -131,7 +131,45 @@
                     $state.go('^');
                 });
             }]
-        });
+        })
+            //Crear comentario pasando la id de cerveza y el usuario
+            .state('nuevocomentario', {
+                parent: 'home',
+                url: '/{idCerveza}/{idUser}/newComentario',
+                data: {
+                    authorities: ['ROLE_USER']
+                },
+                onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                    $uibModal.open({
+                        templateUrl: 'app/entities/comentario/comentario-dialog2.html',
+                        controller: 'ComentarioDialogController',
+                        controllerAs: 'vm',
+                        backdrop: 'static',
+                        size: 'lg',
+                        resolve: {
+                           /* entity: function () {
+                                return {
+                                    comentario: null,
+                                    id: null
+                                };
+                            }*/
+                            entity: ['Cervesa','User', function(Cervesa,User) {
+                                return {
+                                    comentario: null,
+                                    id: null,
+                                    cervesa: Cervesa.get({id : $stateParams.idCerveza}),
+                                    user: User.get({login : $stateParams.idUser})
+                                };
+                            }]
+                        }
+                    }).result.then(function() {
+                        $state.go('home', null, { reload: true });
+                    }, function() {
+                        $state.go('home');
+                    });
+                }]
+            })
+        ;
     }
 
 })();
