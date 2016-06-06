@@ -49,7 +49,9 @@ public class CervesaResource {
     @Inject
     private PrecioRepository precioRepository;
     @Inject
+
     private ComentarioRepository comentarioRepository;
+
     /**
      * POST  /cervesas : Create a new cervesa.
      *
@@ -151,6 +153,7 @@ public class CervesaResource {
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert("cervesa", id.toString())).build();
     }
 
+        /*TOP 10*/
     @RequestMapping(value = "/topcervesas",
         method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)
@@ -171,6 +174,19 @@ public class CervesaResource {
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/topcervesas");
         return new ResponseEntity<>(cervezaDTOs, headers, HttpStatus.OK);
     }
+
+    //COMENTARIO VICTOR utiliza lo mismo que el cerveza-detail
+
+    /*@RequestMapping(value = "/cervesas/{id}",
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public ResponseEntity<List<Comentario>> comentariosIDcerveza(@PathVariable Long id)
+        throws URISyntaxException {
+        log.debug("REST request to get a page of Cervesas");
+        List<Comentario> comentario = comentarioRepository.findComentarioID(id);
+        return new ResponseEntity<>(comentario, HttpStatus.OK);
+    }*/
 // BUSCADOR
     @RequestMapping(value = "/buscacervesas/{cervesaName}",
         method = RequestMethod.GET,
@@ -184,7 +200,7 @@ public class CervesaResource {
         return new ResponseEntity<>(cerva, HttpStatus.OK);
     }
     // Comentario
-    @RequestMapping(value = "/comentarios/",
+/*    @RequestMapping(value = "/comentarios/",
         method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
@@ -194,5 +210,5 @@ public class CervesaResource {
         List<Comentario> coment = comentarioRepository.findComentario();
 
         return new ResponseEntity<>(coment, HttpStatus.OK);
-    }
+    }*/
 }

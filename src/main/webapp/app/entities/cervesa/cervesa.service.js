@@ -24,6 +24,11 @@
                 isArray: true,
                 url:'api/topcervesas'
             },
+           /* 'verComentarios': {
+                method: 'GET',
+                isArray: true,
+                url:'api/cervesas/:id'
+            },*/
             'consultaBu': {
                 method: 'GET',
                 isArray: true,

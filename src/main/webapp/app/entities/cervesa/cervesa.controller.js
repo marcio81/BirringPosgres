@@ -49,6 +49,10 @@
                 //});
             });
         };
+
+
+        
+        
         vm.getBuCervesas = function () {
             Cervesa.consultaBu({consultaBu: vm.buCervesas}, function (response) {
 

@@ -169,6 +169,7 @@
                     }]
                 }
             })
+            
             //Buscadorsad
             .state('busca', {
                 parent: 'app',
@@ -195,7 +196,7 @@
 
 
         //Comentarios
-    .state('comentarios', {
+/*    .state('comentarios', {
             parent: 'app',
             url: '/comentarios',
             data: {
@@ -216,7 +217,7 @@
                 }]
 
             }
-        });
+        })*/;
     }
 
 })();

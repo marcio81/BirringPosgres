@@ -1,8 +1,15 @@
 package com.mycompany.myapp.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.mycompany.myapp.domain.Cervesa;
+import com.mycompany.myapp.domain.Precio;
 import com.mycompany.myapp.domain.Ubicacion;
+import com.mycompany.myapp.domain.User;
+import com.mycompany.myapp.repository.CervesaRepository;
+import com.mycompany.myapp.repository.PrecioRepository;
 import com.mycompany.myapp.repository.UbicacionRepository;
+import com.mycompany.myapp.repository.UserRepository;
+import com.mycompany.myapp.security.SecurityUtils;
 import com.mycompany.myapp.web.rest.util.HeaderUtil;
 import com.mycompany.myapp.web.rest.util.PaginationUtil;
 import org.slf4j.Logger;
@@ -20,6 +27,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 /**
  * REST controller for managing Ubicacion.
@@ -29,22 +37,27 @@ import java.util.Optional;
 public class UbicacionResource {
 
     private final Logger log = LoggerFactory.getLogger(UbicacionResource.class);
-        
+
     @Inject
     private UbicacionRepository ubicacionRepository;
-    
+
+    @Inject
+    private PrecioRepository precioRepository;
+
+    @Inject
+    private UserRepository userRepository;
+
+    @Inject
+    private CervesaRepository cervesaRepository;
+
     /**
      * POST  /ubicacions : Create a new ubicacion.
-     *
-     * @param ubicacion the ubicacion to create
-     * @return the ResponseEntity with status 201 (Created) and with body the new ubicacion, or with status 400 (Bad Request) if the ubicacion has already an ID
-     * @throws URISyntaxException if the Location URI syntax is incorrect
      */
     @RequestMapping(value = "/ubicacions",
         method = RequestMethod.POST,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<Ubicacion> createUbicacion(@RequestBody Ubicacion ubicacion) throws URISyntaxException {
+    public ResponseEntity<Ubicacion> createUbicacion(@RequestBody Ubicacion ubicacion ) throws URISyntaxException {
         log.debug("REST request to save Ubicacion : {}", ubicacion);
         if (ubicacion.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("ubicacion", "idexists", "A new ubicacion cannot already have an ID")).body(null);
@@ -54,6 +67,9 @@ public class UbicacionResource {
             .headers(HeaderUtil.createEntityCreationAlert("ubicacion", result.getId().toString()))
             .body(result);
     }
+
+
+
 
     /**
      * PUT  /ubicacions : Updates an existing ubicacion.
@@ -93,7 +109,7 @@ public class UbicacionResource {
     public ResponseEntity<List<Ubicacion>> getAllUbicacions(Pageable pageable)
         throws URISyntaxException {
         log.debug("REST request to get a page of Ubicacions");
-        Page<Ubicacion> page = ubicacionRepository.findAll(pageable); 
+        Page<Ubicacion> page = ubicacionRepository.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/ubicacions");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }

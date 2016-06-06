@@ -43,7 +43,7 @@
             if (vm.ubicacion.id !== null) {
                 Ubicacion.update(vm.ubicacion, onSaveSuccess, onSaveError);
             } else {
-                Ubicacion.save(vm.ubicacion, onSaveSuccess, onSaveError);
+                Ubicacion.save(vm.ubicacion,onSaveSuccess, onSaveError);
             }
         };
 
