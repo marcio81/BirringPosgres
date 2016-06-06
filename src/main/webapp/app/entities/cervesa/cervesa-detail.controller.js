@@ -25,7 +25,7 @@
 
         <!--COMENTARIO-->
         vm.getComentCervesas = function () {
-            Comentario.comenta({comenta: vm.comentCervesas}, function (response) {
+            Comentario.comenta(function (response) {
 
                 vm.comentarios = response;
 

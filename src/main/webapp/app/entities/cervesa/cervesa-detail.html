@@ -32,22 +32,25 @@
         </dd>
 
         <hr>
-
+    </dl>
 
         <!--COMENTARIO-->
 
-    </dl>
-    <div   ng-model="comentCervesas" ng-change="getComentCervesas()">
+
+    <div >
     <h3>Comentarios</h3>
-    <table >
-        <tbody>
-        <tr ng-repeat="comentario in vm.cervesas track by cervesa.id">
-        <th translate="jhipsterApp.cervesa.comentario">Comentario</th>
-        <td>{{vm.cervesa.comentario}}</td>
-        </tr>
-        </tbody>
-    </table>
+
+
+        <ul ng-repeat="c in vm.cervesas">
+        <li translate="jhipsterApp.cervesa.comentario">Comentario</li>
+        <li translate="jhipsterApp.cervesa.user">User<span>{{vm.c.comentario}}</span></li>
+            <li><span>{{vm.c.Comentario.comentario}}</span></li>
+
+        </ul>
+
     </div>
+    <hr>
+
 <!-- END COMENTARIO-->
 
     <button type="submit"

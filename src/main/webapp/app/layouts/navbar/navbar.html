@@ -12,9 +12,11 @@
             </button>
            <!--  <a class="navbar-brand" href="#/"><span translate="global.title">Jhipster</span> <span class="navbar-version">v{{VERSION}}</span></a> -->
         </div>
+
         <!-- MOSTRAR  ADMIN EXCEPTO ACCOUNT Y HOME LI-->
         <div class="collapse navbar-collapse" id="navbar-collapse" uib-collapse="vm.navCollapsed" ng-switch="vm.isAuthenticated()">
             <ul class="nav navbar-nav navbar-right">
+                <li><span> <img class='icono'  src="../content/images/icono.png" alt="" /></span></li>
                 <li ui-sref-active="active">
                     <a ui-sref="busca" ng-click="vm.navCollapsed = true">
                         <span class="glyphicon glyphicon-search"></span>

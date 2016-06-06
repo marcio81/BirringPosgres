@@ -184,14 +184,14 @@ public class CervesaResource {
         return new ResponseEntity<>(cerva, HttpStatus.OK);
     }
     // Comentario
-    @RequestMapping(value = "/comentarios/{{id}}",
+    @RequestMapping(value = "/comentarios/",
         method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<List<Comentario>> getComentCervesas(@PathVariable Long id)
+    public ResponseEntity<List<Comentario>> getComentCervesas()
         throws URISyntaxException {
         log.debug("REST request to get Comentario: {}");
-        List<Comentario> coment = comentarioRepository.findComentario(id);
+        List<Comentario> coment = comentarioRepository.findComentario();
 
         return new ResponseEntity<>(coment, HttpStatus.OK);
     }

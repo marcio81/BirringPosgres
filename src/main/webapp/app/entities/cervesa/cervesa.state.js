@@ -31,7 +31,7 @@
                 }]
             }
         })
-        .state('cervesa-detail', {
+        .state('cervesa-detail',{
             parent: 'entity',
             url: '/cervesa/{id}',
             data: {
@@ -197,7 +197,7 @@
         //Comentarios
     .state('comentarios', {
             parent: 'app',
-            url: '/comentarios/{id}',
+            url: '/comentarios',
             data: {
                 authorities: ['ROLE_USER']
             },
@@ -213,10 +213,8 @@
                     $translatePartialLoader.addPart('cervesa');
                     $translatePartialLoader.addPart('global');
                     return $translate.refresh();
-                }],
-                entity: ['$stateParams', 'Cervesa', function($stateParams, Cervesa) {
-                    return Cervesa.get({id : $stateParams.id});
                 }]
+
             }
         });
     }
