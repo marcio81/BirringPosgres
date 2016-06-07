@@ -13,9 +13,9 @@
         entity.$promise.then(function(data) {
             vm.cervesa = data;
            Cervesa.verComentarios({id:vm.cervesa.id},function (response) {
-                //$http.get("api/cervesas").then(function (response) {
+
                 vm.cervezaComentarios = response;
-                //});
+
             });
 
         });
@@ -34,24 +34,5 @@
         vm.byteSize = DataUtils.byteSize;
         vm.openFile = DataUtils.openFile;
 
-//esta comentado abajo
-      /*  vm.getComentariosCervezaID = function () {
-            Cervesa.verComentarios({id:vm.idCerveza})(function (response) {
-                //$http.get("api/cervesas").then(function (response) {
-                vm.cervezaComentarios = response;
-                //});
-            });
-        };*/
-
-        <!--COMENTARIO-->
-        /*vm.getComentCervesas = function () {
-            Comentario.comenta(function (response) {
-
-                vm.comentarios = response;
-
-            });
-        };*/
-
-         //vm.getComentariosCervezaID();
     }
 })();

@@ -3,6 +3,7 @@ package com.mycompany.myapp.web.rest;
 import com.codahale.metrics.annotation.Timed;
 import com.mycompany.myapp.domain.Cervesa;
 import com.mycompany.myapp.domain.Comentario;
+import com.mycompany.myapp.domain.Precio;
 import com.mycompany.myapp.repository.CervesaRepository;
 import com.mycompany.myapp.repository.ComentarioRepository;
 import com.mycompany.myapp.repository.EvaluarRepository;
@@ -45,8 +46,8 @@ public class CervesaResource {
 
     @Inject
     private PrecioRepository precioRepository;
-    @Inject
 
+    @Inject
     private ComentarioRepository comentarioRepository;
 
     /**
@@ -208,6 +209,19 @@ public class CervesaResource {
         List<Comentario> coment = comentarioRepository.findComentarioID(id);
 
         return new ResponseEntity<>(coment, HttpStatus.OK);
+    }
+
+    // Precio medio
+    @RequestMapping(value = "/cervesas/{id}/precioMedio",
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public ResponseEntity<List<Precio>> getPrecioMedioCervezaID(@PathVariable Long id)
+        throws URISyntaxException {
+        log.debug("REST request to get Comentario: {}", id);
+        List<Precio> prec = precioRepository.findPrecioMedio(id);
+
+        return new ResponseEntity<>(prec, HttpStatus.OK);
     }
 }
 
