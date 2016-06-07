@@ -35,30 +35,10 @@
     </dl>
 <table>
     <tr ng-repeat="coment in vm.cervezaComentarios">
-        <td>{{coment.user}}</td>
-        <td>{{coment.comentarios}}</td>
+        <td>{{coment.user.id}}</td>
+        <td>{{coment.comentario}}</td>
     </tr>
 </table>
-        <!--COMENTARIO-->
-
-
-  <!--  <div >
-    <h3>Comentarios</h3>
-
-
-        <ul ng-repeat="c in vm.cervesas">
-        <li translate="jhipsterApp.cervesa.comentario">Comentario</li>
-        <li translate="jhipsterApp.cervesa.user">User<span>{{vm.c.comentario}}</span></li>
-            <li><span>{{vm.c.Comentario.comentario}}</span></li>
-
-        </ul>
-
-    </div>
-
-
-    <hr>-->
-
-<!-- END COMENTARIO-->
 
     <button type="submit"
             onclick="window.history.back()"

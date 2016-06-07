@@ -172,9 +172,9 @@ public class CervesaResource {
         return new ResponseEntity<>(cervezaDTOs, headers, HttpStatus.OK);
     }
 
-    //COMENTARIO VICTOR utiliza lo mismo que el cerveza-detail
+    //COMENTARIO VICTOR utiliza lo mismo que el cerveza-detail /cervesas/{id}
 
-    /*@RequestMapping(value = "/cervesas/{id}",
+ /*   @RequestMapping(value = "/coment/{id}",
         method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
