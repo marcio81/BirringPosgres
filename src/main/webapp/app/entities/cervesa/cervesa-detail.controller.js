@@ -25,7 +25,7 @@
 
 //esta comentado abajo
         vm.getComentariosCervezaID = function () {
-            Cervesa.verComentarios({id:vm.idCerveza})(function (response) {
+            Cervesa.verComentarios({verComentarios:vm.idCerveza})(function (response) {
                 //$http.get("api/cervesas").then(function (response) {
                 vm.cervezaComentarios = response;
                 //});

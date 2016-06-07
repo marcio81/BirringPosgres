@@ -153,7 +153,7 @@ public class CervesaResource {
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert("cervesa", id.toString())).build();
     }
 
-        /*TOP 10*/
+    /*TOP 10*/
     @RequestMapping(value = "/topcervesas",
         method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)
@@ -168,7 +168,7 @@ public class CervesaResource {
         List<CervezaDTO> cervezaDTOs = new ArrayList<>();
 
         page.getContent()
-            .forEach(cerveza -> cervezaDTOs.add(new CervezaDTO((Long) cerveza[0],(String)cerveza[1],(byte[]) cerveza[2],(Double) cerveza[3])) );
+            .forEach(cerveza -> cervezaDTOs.add(new CervezaDTO((Long) cerveza[0], (String) cerveza[1], (byte[]) cerveza[2], (Double) cerveza[3])));
 
 
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/topcervesas");
@@ -195,20 +195,22 @@ public class CervesaResource {
     public ResponseEntity<List<Cervesa>> getBuCervesas(@PathVariable String cervesaName)
         throws URISyntaxException {
         log.debug("REST request to get Cervesa: {}", cervesaName);
-       List<Cervesa> cerva = cervesaRepository.findAllCerva(cervesaName);
+        List<Cervesa> cerva = cervesaRepository.findAllCerva(cervesaName);
 
         return new ResponseEntity<>(cerva, HttpStatus.OK);
     }
+
     // Comentario
-/*    @RequestMapping(value = "/comentarios/",
+    @RequestMapping(value = "/comentariosId/{id}",
         method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<List<Comentario>> getComentCervesas()
+    public ResponseEntity<List<Comentario>> getComentariosCervezaID(@PathVariable Long id)
         throws URISyntaxException {
-        log.debug("REST request to get Comentario: {}");
-        List<Comentario> coment = comentarioRepository.findComentario();
+        log.debug("REST request to get Comentario: {}", id);
+        List<Comentario> coment = comentarioRepository.findComentarioID(id);
 
         return new ResponseEntity<>(coment, HttpStatus.OK);
-    }*/
+    }
 }
+

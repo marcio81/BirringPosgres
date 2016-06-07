@@ -169,7 +169,7 @@
                     }]
                 }
             })
-            
+
             //Buscadorsad
             .state('busca', {
                 parent: 'app',
@@ -196,9 +196,9 @@
 
 
         //Comentarios
-/*    .state('comentarios', {
+    .state('comentariosId', {
             parent: 'app',
-            url: '/comentarios',
+            url: '/comentariosId',
             data: {
                 authorities: ['ROLE_USER']
             },
@@ -217,7 +217,7 @@
                 }]
 
             }
-        })*/;
+        });
     }
 
 })();
