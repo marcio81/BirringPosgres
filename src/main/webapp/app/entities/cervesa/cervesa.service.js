@@ -27,7 +27,7 @@
             'verComentarios': {
                 method: 'GET',
                 isArray: true,
-                url:'api/comentariosId/:id'
+                url:'api/cervesas/:id/comentarios'
             },
             'consultaBu': {
                 method: 'GET',

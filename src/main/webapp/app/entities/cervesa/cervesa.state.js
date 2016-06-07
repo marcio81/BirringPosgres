@@ -198,7 +198,7 @@
         //Comentarios
     .state('comentariosId', {
             parent: 'app',
-            url: '/comentariosId',
+            url: '/comentariosId/{id}',
             data: {
                 authorities: ['ROLE_USER']
             },

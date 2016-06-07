@@ -9,7 +9,18 @@
 
     function CervesaDetailController($scope, $rootScope, $stateParams, DataUtils, entity, Cervesa, Precio, Evaluar, Comentario, Ubicacion) {
         var vm = this;
-        vm.cervesa = entity;
+
+        entity.$promise.then(function(data) {
+            vm.cervesa = data;
+           Cervesa.verComentarios({id:vm.cervesa.id},function (response) {
+                //$http.get("api/cervesas").then(function (response) {
+                vm.cervezaComentarios = response;
+                //});
+            });
+
+        });
+
+
         vm.load = function (id) {
             Cervesa.get({id: id}, function(result) {
                 vm.cervesa = result;
@@ -24,13 +35,13 @@
         vm.openFile = DataUtils.openFile;
 
 //esta comentado abajo
-        vm.getComentariosCervezaID = function () {
-            Cervesa.verComentarios({verComentarios:vm.idCerveza})(function (response) {
+      /*  vm.getComentariosCervezaID = function () {
+            Cervesa.verComentarios({id:vm.idCerveza})(function (response) {
                 //$http.get("api/cervesas").then(function (response) {
                 vm.cervezaComentarios = response;
                 //});
             });
-        };
+        };*/
 
         <!--COMENTARIO-->
         /*vm.getComentCervesas = function () {

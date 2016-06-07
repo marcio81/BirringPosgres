@@ -3,20 +3,17 @@ package com.mycompany.myapp.web.rest;
 import com.codahale.metrics.annotation.Timed;
 import com.mycompany.myapp.domain.Cervesa;
 import com.mycompany.myapp.domain.Comentario;
-import com.mycompany.myapp.domain.Precio;
 import com.mycompany.myapp.repository.CervesaRepository;
+import com.mycompany.myapp.repository.ComentarioRepository;
 import com.mycompany.myapp.repository.EvaluarRepository;
 import com.mycompany.myapp.repository.PrecioRepository;
-import com.mycompany.myapp.repository.ComentarioRepository;
 import com.mycompany.myapp.web.rest.dto.CervezaDTO;
-import com.mycompany.myapp.web.rest.dto.Top10DTO;
 import com.mycompany.myapp.web.rest.util.HeaderUtil;
 import com.mycompany.myapp.web.rest.util.PaginationUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -201,7 +198,7 @@ public class CervesaResource {
     }
 
     // Comentario
-    @RequestMapping(value = "/comentariosId/{id}",
+    @RequestMapping(value = "/cervesas/{id}/comentarios",
         method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
