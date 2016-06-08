@@ -28,8 +28,9 @@ public interface UbicacionRepository extends JpaRepository<Ubicacion,Long> {
     /*@Query("select c from Comentario c  where c.cervesa.id=:id")
     List<Comentario> findComentarioID(@Param("id") Long id);*/
 
-    /*@Query("select u from Ubicacion u, Cervesa c where c.cervesa.id=:id and c.ubicacions.id = u.id")
-    List<Ubicacion> findUbicacionID(@Param("id") Long id);*/
+    //El cervesas hace referencia al mappedBy
+    @Query("select distinct u from Ubicacion u JOIN u.cervesas p  where p.id=:id")
+    List<Ubicacion> findUbicacionesID(@Param("id") Long id);
 
 
 

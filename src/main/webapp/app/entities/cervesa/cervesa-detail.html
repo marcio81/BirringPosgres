@@ -33,6 +33,12 @@
 
         <hr>
     </dl>
+    <ng-map>
+        <marker ng-repeat="p in vm.cervezaUbication"
+                position="[{{p.longitud}},{{p.latitud}}]";></marker>
+    </ng-map>
+    <div ng-repeat="prec in vm.cervezaPrecioMedio">El precio medio de la cerveza es : {{prec}}</div>
+    <!--<div>{{vm.cervezaPrecioMedio}}</div>-->
 <table>
     <tr ng-repeat="coment in vm.cervezaComentarios">
         <td>{{coment.user.id}}</td>

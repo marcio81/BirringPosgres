@@ -217,7 +217,54 @@
                 }]
 
             }
-        });
+        })
+        // Precio Medio
+            .state('precioId', {
+                parent: 'app',
+                url: '/precioId/{id}',
+                data: {
+                    authorities: ['ROLE_USER']
+                },
+                views: {
+                    'content@': {
+                        templateUrl: 'app/entities/cervesa/cervesa-detail.html',
+                        controller: 'CervesaDetailController',
+                        controllerAs: 'vm'
+                    }
+                },
+                resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('cervesa');
+                        $translatePartialLoader.addPart('global');
+                        return $translate.refresh();
+                    }]
+
+                }
+            })
+
+            // Ubicaciones de la cerveza
+            .state('ubicacionId', {
+                parent: 'app',
+                url: '/ubicacionId/{id}',
+                data: {
+                    authorities: ['ROLE_USER']
+                },
+                views: {
+                    'content@': {
+                        templateUrl: 'app/entities/cervesa/cervesa-detail.html',
+                        controller: 'CervesaDetailController',
+                        controllerAs: 'vm'
+                    }
+                },
+                resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('cervesa');
+                        $translatePartialLoader.addPart('global');
+                        return $translate.refresh();
+                    }]
+
+                }
+            });
     }
 
 })();

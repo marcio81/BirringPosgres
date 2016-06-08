@@ -29,6 +29,16 @@
                 isArray: true,
                 url:'api/cervesas/:id/comentarios'
             },
+            'verPrecioMedio': {
+                method: 'GET',
+                isArray: true,
+                url:'api/cervesas/:id/precioMedio'
+            },
+            'verUbicaciones': {
+                method: 'GET',
+                isArray: true,
+                url:'api/cervesas/:id/ubication'
+            },
             'consultaBu': {
                 method: 'GET',
                 isArray: true,

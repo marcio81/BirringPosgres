@@ -4,10 +4,8 @@ import com.codahale.metrics.annotation.Timed;
 import com.mycompany.myapp.domain.Cervesa;
 import com.mycompany.myapp.domain.Comentario;
 import com.mycompany.myapp.domain.Precio;
-import com.mycompany.myapp.repository.CervesaRepository;
-import com.mycompany.myapp.repository.ComentarioRepository;
-import com.mycompany.myapp.repository.EvaluarRepository;
-import com.mycompany.myapp.repository.PrecioRepository;
+import com.mycompany.myapp.domain.Ubicacion;
+import com.mycompany.myapp.repository.*;
 import com.mycompany.myapp.web.rest.dto.CervezaDTO;
 import com.mycompany.myapp.web.rest.util.HeaderUtil;
 import com.mycompany.myapp.web.rest.util.PaginationUtil;
@@ -49,6 +47,9 @@ public class CervesaResource {
 
     @Inject
     private ComentarioRepository comentarioRepository;
+
+    @Inject
+    private UbicacionRepository ubicacionRepository;
 
     /**
      * POST  /cervesas : Create a new cervesa.
@@ -173,18 +174,6 @@ public class CervesaResource {
         return new ResponseEntity<>(cervezaDTOs, headers, HttpStatus.OK);
     }
 
-    //COMENTARIO VICTOR utiliza lo mismo que el cerveza-detail /cervesas/{id}
-
- /*   @RequestMapping(value = "/coment/{id}",
-        method = RequestMethod.GET,
-        produces = MediaType.APPLICATION_JSON_VALUE)
-    @Timed
-    public ResponseEntity<List<Comentario>> comentariosIDcerveza(@PathVariable Long id)
-        throws URISyntaxException {
-        log.debug("REST request to get a page of Cervesas");
-        List<Comentario> comentario = comentarioRepository.findComentarioID(id);
-        return new ResponseEntity<>(comentario, HttpStatus.OK);
-    }*/
 // BUSCADOR
     @RequestMapping(value = "/buscacervesas/{cervesaName}",
         method = RequestMethod.GET,
@@ -223,5 +212,31 @@ public class CervesaResource {
 
         return new ResponseEntity<>(prec, HttpStatus.OK);
     }
+
+    // Ubicaciones de la cerveza
+    @RequestMapping(value = "/cervesas/{id}/ubication",
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public ResponseEntity<List<Ubicacion>> getUbicacionesIDCerveza(@PathVariable Long id)
+        throws URISyntaxException {
+        log.debug("REST request to get Comentario: {}", id);
+        List<Ubicacion> ubic = ubicacionRepository.findUbicacionesID(id);
+
+        return new ResponseEntity<>(ubic, HttpStatus.OK);
+    }
+
+    // Precio medio
+    /*@RequestMapping(value = "/cervesas/{id}/precioMedio",
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public ResponseEntity<Precio> getPrecioMedioCervezaID(@PathVariable Long id)
+        throws URISyntaxException {
+        log.debug("REST request to get Comentario: {}", id);
+        Precio prec = precioRepository.findPrecioMedio(id);
+
+        return new ResponseEntity<>(prec, HttpStatus.OK);
+    }*/
 }
 

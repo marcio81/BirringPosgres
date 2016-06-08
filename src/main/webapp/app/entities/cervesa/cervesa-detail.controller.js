@@ -20,6 +20,26 @@
 
         });
 
+        entity.$promise.then(function(data) {
+            vm.cervesa = data;
+            Cervesa.verPrecioMedio({id:vm.cervesa.id},function (response) {
+
+                vm.cervezaPrecioMedio = response;
+
+            });
+
+        });
+
+        entity.$promise.then(function(data) {
+            vm.cervesa = data;
+            Cervesa.verUbicaciones({id:vm.cervesa.id},function (response) {
+
+                vm.cervezaUbication = response;
+
+            });
+
+        });
+
 
         vm.load = function (id) {
             Cervesa.get({id: id}, function(result) {
