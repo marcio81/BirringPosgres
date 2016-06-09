@@ -5,10 +5,31 @@
         .module('jhipsterApp')
         .controller('CervesaDetailController', CervesaDetailController);
 
-    CervesaDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'DataUtils', 'entity', 'Cervesa', 'Precio', 'Evaluar', 'Comentario', 'Ubicacion'];
+    CervesaDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'DataUtils', 'entity', 'Cervesa', 'Precio', 'Evaluar', 'Comentario', 'Ubicacion','NgMap'];
 
-    function CervesaDetailController($scope, $rootScope, $stateParams, DataUtils, entity, Cervesa, Precio, Evaluar, Comentario, Ubicacion) {
+    function CervesaDetailController($scope, $rootScope, $stateParams, DataUtils, entity, Cervesa, Precio, Evaluar, Comentario, Ubicacion, NgMap) {
         var vm = this;
+
+        NgMap.getMap().then(function(map) {
+            vm.map = map;
+
+            vm.showCustomMarker= function(evt, ubi) {
+
+                map.customMarkers.foo.setVisible(true);
+                map.customMarkers.foo.setPosition(this.getPosition());
+
+               
+                vm.uName=ubi.ubiName;
+                vm.uDirec=ubi.direccion;
+            };
+            vm.closeCustomMarker= function(evt) {
+                this.style.display = 'none';
+                vm.test=1;
+            };
+
+
+        });
+
 
         entity.$promise.then(function(data) {
             vm.cervesa = data;

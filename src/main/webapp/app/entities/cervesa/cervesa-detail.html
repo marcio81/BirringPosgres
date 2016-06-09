@@ -34,10 +34,38 @@
         <hr>
     </dl>
     <ng-map>
-        <marker ng-repeat="p in vm.cervezaUbication"
-                position="[{{p.longitud}},{{p.latitud}}]";></marker>
+        <div ng-repeat="p in vm.cervezaUbication">
+        <marker  on-click="vm.showCustomMarker(p)"
+                position="[{{p.latitud}},{{p.longitud}}]"></marker>
+
+        <!-- En content/carousel.css se especifica el estilo del custom marker -->
+        <custom-marker id="foo" position="[{{p.latitud}},{{p.longitud}}]" on-click="vm.closeCustomMarker()">
+
+            <!-- Para solucionar el problema de que automaticamente se muestra la informacion si
+            existe vm.uName creado en el controlador elimino el div por defecto para mostrar informacion -->
+            <div>
+            Nombre:
+            <div ng-if="vm.uName">{{vm.uName}}</div>
+            <div ng-hide="vm.uName">{{p.ubiName}}</div>
+            </div></br>
+
+            <div>
+            Dirección:
+            <div ng-if="vm.uName">{{vm.uDirec}}</div>
+            <div ng-hide="vm.uName">{{p.direccion}}</div>
+            </div>
+
+           <!-- <div ng-hide="vm.uName">
+            Nombre: {{p.ubiName}}</br>
+            Dirección: {{p.direccion}}</br>
+            </div>-->
+
+
+
+        </custom-marker>
+        </div>
     </ng-map>
-    <div ng-repeat="prec in vm.cervezaPrecioMedio">El precio medio de la cerveza es : {{prec}}</div>
+    <div ng-repeat="prec in vm.cervezaPrecioMedio" ng-if="prec">El precio medio de la cerveza es : {{prec}}</div>
     <!--<div>{{vm.cervezaPrecioMedio}}</div>-->
 <table>
     <tr ng-repeat="coment in vm.cervezaComentarios">
