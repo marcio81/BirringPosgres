@@ -5,10 +5,15 @@
         .module('jhipsterApp')
         .controller('PrecioDialogController', PrecioDialogController);
 
-    PrecioDialogController.$inject = ['$scope', '$stateParams', '$uibModalInstance', 'entity', 'Precio', 'Ubicacion', 'Cervesa', 'User'];
+    PrecioDialogController.$inject = ['$scope', '$stateParams', '$uibModalInstance', 'entity', 'Precio', 'Ubicacion', 'Cervesa', 'User', 'ubicacion'];
 
-    function PrecioDialogController ($scope, $stateParams, $uibModalInstance, entity, Precio, Ubicacion, Cervesa, User) {
+    function PrecioDialogController ($scope, $stateParams, $uibModalInstance, entity, Precio, Ubicacion, Cervesa, User, ubicacion) {
         var vm = this;
+
+        ubicacion.$promise.then(function (data) {
+            vm.ubicacion=data;
+        })
+
         vm.precio = entity;
         vm.ubicacions = Ubicacion.query();
         vm.cervesas = Cervesa.query();
@@ -34,6 +39,8 @@
             if (vm.precio.id !== null) {
                 Precio.update(vm.precio, onSaveSuccess, onSaveError);
             } else {
+                vm.precio.cervesa = {id: vm.ubicacion.cervesas[0].id}
+                vm.precio.ubicacion = {id: vm.ubicacion.id};
                 Precio.save(vm.precio, onSaveSuccess, onSaveError);
             }
         };

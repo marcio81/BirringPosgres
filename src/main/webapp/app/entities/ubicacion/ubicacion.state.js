@@ -81,8 +81,9 @@
                             };
                         }
                     }
-                }).result.then(function() {
-                    $state.go('ubicacion', null, { reload: true });
+                }).result.then(function(data) {
+                    //$state.go('ubicacion', null, { reload: true });
+                    $state.go("nuevoprecio",{idUbicacion:data.id});
                 }, function() {
                     $state.go('ubicacion');
                 });

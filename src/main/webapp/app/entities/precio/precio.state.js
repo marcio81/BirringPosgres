@@ -135,7 +135,7 @@
             // CREAR PRECIO COGIENDO EL ID DE LA CERVEZA
             .state('nuevoprecio', {
                 parent: 'home',
-                url: '/{idCerveza}/newPrecio',
+                url: '/{idCerveza}/{idUbicacion}/newPrecio',
                 data: {
                     authorities: ['ROLE_USER']
                 },
@@ -166,6 +166,12 @@
                                     //cervesa: $stateParams.idCerveza
                                     cervesa: Cervesa.get({id : $stateParams.idCerveza})
                                 };
+                            }],
+                            ubicacion: ['Ubicacion', function(Ubicacion) {
+
+                                    //cervesa: $stateParams.idCerveza
+                                 return Ubicacion.get({id : $stateParams.idUbicacion});
+
                             }]
 
                         }
