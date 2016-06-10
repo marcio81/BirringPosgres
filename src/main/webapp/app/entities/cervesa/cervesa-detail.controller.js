@@ -11,7 +11,7 @@
         var vm = this;
 
         NgMap.getMap().then(function(map) {
-            vm.map = map;
+            vm.map2 = map;
 
            /* vm.showCustomMarker= function(evt, ubi) {
 
@@ -31,11 +31,11 @@
         });
         vm.showDetail = function(e, shop) {
             vm.shop = shop;
-            vm.map.showInfoWindow('yoyo', shop.id.toString());
+            vm.map2.showInfoWindow('yoyo', shop.id.toString());
         };
 
          vm.hideDetail = function() {
-             vm.map.hideInfoWindow('yoyo');
+             vm.map2.hideInfoWindow('yoyo');
          };
         vm.mouseover = function() {
             console.log('mouseover');
