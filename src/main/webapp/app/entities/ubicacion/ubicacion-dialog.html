@@ -75,9 +75,11 @@
             2: {{vm.ubicacion.longitud}}<br/>-->
         </div>
         address : {{vm.ubicacion.direccion}}
-        <ng-map>
+        <div ng-style="{'visibility': !vm.ubicacion.direccion ? 'visible':'hidden'}">
+        <ng-map default-style="true">
             <marker position="{{vm.ubicacion.direccion}}"></marker>
         </ng-map>
+        </div>
         </div>
 
 

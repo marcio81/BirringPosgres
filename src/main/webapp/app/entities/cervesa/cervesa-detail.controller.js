@@ -13,23 +13,33 @@
         NgMap.getMap().then(function(map) {
             vm.map = map;
 
-            vm.showCustomMarker= function(evt, ubi) {
+           /* vm.showCustomMarker= function(evt, ubi) {
 
                 map.customMarkers.foo.setVisible(true);
                 map.customMarkers.foo.setPosition(this.getPosition());
 
-               
+
                 vm.uName=ubi.ubiName;
                 vm.uDirec=ubi.direccion;
             };
             vm.closeCustomMarker= function(evt) {
                 this.style.display = 'none';
                 vm.test=1;
-            };
+            };*/
 
 
         });
+        vm.showDetail = function(e, shop) {
+            vm.shop = shop;
+            vm.map.showInfoWindow('yoyo', this.id);
+        };
 
+         vm.hideDetail = function() {
+             vm.map.hideInfoWindow('yoyo');
+         };
+        vm.mouseover = function() {
+            console.log('mouseover');
+        };
 
         entity.$promise.then(function(data) {
             vm.cervesa = data;

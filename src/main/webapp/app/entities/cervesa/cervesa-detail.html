@@ -33,17 +33,28 @@
 
         <hr>
     </dl>
-    <ng-map>
-        <div ng-repeat="p in vm.cervezaUbication">
-        <marker  on-click="vm.showCustomMarker(p)"
-                position="[{{p.latitud}},{{p.longitud}}]"></marker>
+    <ng-map default-style="true">
+        <marker id="{{shop.id}}" position="[{{shop.latitud}},{{shop.longitud}}]"
+            ng-repeat="shop in vm.cervezaUbication" on-click="vm.showDetail(shop)"></marker>
+        <!-- <marker  on-click="vm.showCustomMarker(p)"
+                position="[{{p.latitud}},{{p.longitud}}]"></marker>-->
+
+            <info-window id="yoyo" on-mouseover="vm.mouseover()">
+                <div ng-non-bindable="">
+                    id: {{vm.shop.id}}<br/>
+                    Nombre: {{vm.shop.ubiName}}<br/>
+                    Direccion: {{vm.shop.direccion}}<br/>
+                </div>
+            </info-window>
 
         <!-- En content/carousel.css se especifica el estilo del custom marker -->
-        <custom-marker id="foo" position="[{{p.latitud}},{{p.longitud}}]" on-click="vm.closeCustomMarker()">
+        <!--<custom-marker id="foo" position="[{{p.latitud}},{{p.longitud}}]" on-click="vm.closeCustomMarker()">-->
+
 
             <!-- Para solucionar el problema de que automaticamente se muestra la informacion si
             existe vm.uName creado en el controlador elimino el div por defecto para mostrar informacion -->
-            <div>
+
+            <!--<div>
             Nombre:
             <div ng-if="vm.uName">{{vm.uName}}</div>
             <div ng-hide="vm.uName">{{p.ubiName}}</div>
@@ -53,7 +64,7 @@
             Dirección:
             <div ng-if="vm.uName">{{vm.uDirec}}</div>
             <div ng-hide="vm.uName">{{p.direccion}}</div>
-            </div>
+            </div>-->
 
            <!-- <div ng-hide="vm.uName">
             Nombre: {{p.ubiName}}</br>
@@ -62,8 +73,8 @@
 
 
 
-        </custom-marker>
-        </div>
+        <!--</custom-marker>-->
+
     </ng-map>
     <div ng-repeat="prec in vm.cervezaPrecioMedio" ng-if="prec">El precio medio de la cerveza es : {{prec}}</div>
     <!--<div>{{vm.cervezaPrecioMedio}}</div>-->
