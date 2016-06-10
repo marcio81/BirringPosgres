@@ -31,7 +31,7 @@
         });
         vm.showDetail = function(e, shop) {
             vm.shop = shop;
-            vm.map.showInfoWindow('yoyo', this.id);
+            vm.map.showInfoWindow('yoyo', shop.id.toString());
         };
 
          vm.hideDetail = function() {

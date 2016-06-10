@@ -33,7 +33,7 @@
 
         <hr>
     </dl>
-    <ng-map default-style="true">
+    <ng-map default-style="true" zoom="13" center="[41.3857205, 2.1672644999999875]">
         <marker id="{{shop.id}}" position="[{{shop.latitud}},{{shop.longitud}}]"
             ng-repeat="shop in vm.cervezaUbication" on-click="vm.showDetail(shop)"></marker>
         <!-- <marker  on-click="vm.showCustomMarker(p)"
@@ -41,7 +41,7 @@
 
             <info-window id="yoyo" on-mouseover="vm.mouseover()">
                 <div ng-non-bindable="">
-                    id: {{vm.shop.id}}<br/>
+                    <!--id: {{vm.shop.id}}<br/>-->
                     Nombre: {{vm.shop.ubiName}}<br/>
                     Direccion: {{vm.shop.direccion}}<br/>
                 </div>
