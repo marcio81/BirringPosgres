@@ -2,7 +2,7 @@ package com.mycompany.myapp.repository;
 
 import com.mycompany.myapp.domain.Cervesa;
 import com.mycompany.myapp.domain.Evaluar;
-
+import org.springframework.data.repository.query.Param;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.*;
@@ -20,6 +20,8 @@ public interface EvaluarRepository extends JpaRepository<Evaluar,Long> {
     @Query("SELECT e.cervesa.id, e.cervesa.cervesaName, e.cervesa.foto, AVG(e.evaluacion)  FROM Evaluar e group by e.cervesa.id, e.cervesa.cervesaName, e.cervesa.foto order by  AVG(e.evaluacion) desc")
     Page<Object[]> findTop10(Pageable pageable);
 
+   @Query("SELECT  AVG(e.evaluacion)  FROM Evaluar e where e.cervesa.id=:id")
+    List<Evaluar> findEvaluarID(@Param("id") Long id);
     /*@Query("SELECT AVG(e.evaluacion), e.cervesa.id FROM Evaluar e group by e.cervesa.id order by  AVG(e.evaluacion) desc")
     List<Object[]> findTop10();*/
 }

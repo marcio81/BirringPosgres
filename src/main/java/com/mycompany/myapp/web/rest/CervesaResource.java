@@ -5,6 +5,7 @@ import com.mycompany.myapp.domain.Cervesa;
 import com.mycompany.myapp.domain.Comentario;
 import com.mycompany.myapp.domain.Precio;
 import com.mycompany.myapp.domain.Ubicacion;
+import com.mycompany.myapp.domain.Evaluar;
 import com.mycompany.myapp.repository.*;
 import com.mycompany.myapp.web.rest.dto.CervezaDTO;
 import com.mycompany.myapp.web.rest.util.HeaderUtil;
@@ -225,7 +226,18 @@ public class CervesaResource {
 
         return new ResponseEntity<>(ubic, HttpStatus.OK);
     }
+    // Evaluaciones de la cerveza
+    @RequestMapping(value = "/cervesas/{id}/evaluar",
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public ResponseEntity<List<Evaluar>> getEvaluarIDCerveza(@PathVariable Long id)
+        throws URISyntaxException {
+        log.debug("REST request to get Evaluar: {}", id);
+        List<Evaluar> eva = evaluarRepository.findEvaluarID(id);
 
+        return new ResponseEntity<>(eva, HttpStatus.OK);
+    }
     // Precio medio
     /*@RequestMapping(value = "/cervesas/{id}/precioMedio",
         method = RequestMethod.GET,

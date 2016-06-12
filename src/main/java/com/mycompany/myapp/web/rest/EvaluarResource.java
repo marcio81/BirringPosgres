@@ -2,7 +2,9 @@ package com.mycompany.myapp.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.mycompany.myapp.domain.Evaluar;
+import com.mycompany.myapp.domain.User;
 import com.mycompany.myapp.repository.EvaluarRepository;
+import com.mycompany.myapp.repository.UserRepository;
 import com.mycompany.myapp.web.rest.util.HeaderUtil;
 import com.mycompany.myapp.web.rest.util.PaginationUtil;
 import org.slf4j.Logger;
@@ -15,6 +17,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import com.mycompany.myapp.security.SecurityUtils;
 import javax.inject.Inject;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -32,6 +35,8 @@ public class EvaluarResource {
 
     @Inject
     private EvaluarRepository evaluarRepository;
+    @Inject
+    private UserRepository userRepository;
 
     /**
      * POST  /evaluars : Create a new evaluar.
@@ -49,6 +54,8 @@ public class EvaluarResource {
         if (evaluar.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("evaluar", "idexists", "A new evaluar cannot already have an ID")).body(null);
         }
+        User user = userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).get();
+        evaluar.setUser(user);
         Evaluar result = evaluarRepository.save(evaluar);
         return ResponseEntity.created(new URI("/api/evaluars/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert("evaluar", result.getId().toString()))

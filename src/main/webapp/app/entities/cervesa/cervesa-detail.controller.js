@@ -13,20 +13,6 @@
         NgMap.getMap().then(function(map) {
             vm.map2 = map;
 
-           /* vm.showCustomMarker= function(evt, ubi) {
-
-                map.customMarkers.foo.setVisible(true);
-                map.customMarkers.foo.setPosition(this.getPosition());
-
-
-                vm.uName=ubi.ubiName;
-                vm.uDirec=ubi.direccion;
-            };
-            vm.closeCustomMarker= function(evt) {
-                this.style.display = 'none';
-                vm.test=1;
-            };*/
-
 
         });
         vm.showDetail = function(e, shop) {
@@ -70,6 +56,16 @@
             });
 
         });
+        entity.$promise.then(function(data) {
+            vm.cervesa = data;
+            Cervesa.verEvaluars({id:vm.cervesa.id},function (response) {
+
+                vm.cervezaEvaluars = response;
+
+            });
+
+        });
+
 
 
         vm.load = function (id) {
@@ -84,6 +80,23 @@
 
         vm.byteSize = DataUtils.byteSize;
         vm.openFile = DataUtils.openFile;
-
+       
     }
+
+
+
 })();
+/* vm.showCustomMarker= function(evt, ubi) {
+
+ map.customMarkers.foo.setVisible(true);
+ map.customMarkers.foo.setPosition(this.getPosition());
+
+
+ vm.uName=ubi.ubiName;
+ vm.uDirec=ubi.direccion;
+ };
+ vm.closeCustomMarker= function(evt) {
+ this.style.display = 'none';
+ vm.test=1;
+ };*/
+

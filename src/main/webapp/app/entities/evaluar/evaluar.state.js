@@ -108,6 +108,42 @@
                 });
             }]
         })
+
+        //Crear evaluacion pasando la id de cerveza y el usuario
+            .state('nuevaevaluar', {
+                parent: 'home',
+                url: '/{idCerveza}/newEvaluar',
+
+                data: {
+                    authorities: ['ROLE_USER']
+                },
+                onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                    $uibModal.open({
+                        templateUrl: 'app/entities/evaluar/evaluar-dialog2.html',
+                        controller: 'EvaluarDialogController',
+                        controllerAs: 'vm',
+                        backdrop: 'static',
+                        size: 'lg',
+                        resolve: {
+
+                            entity: ['Cervesa', function(Cervesa) {
+                                return {
+                                    evaluar: null,
+                                    id: null,
+                                    cervesa: Cervesa.get({id : $stateParams.idCerveza})
+
+                                };
+                            }]
+                        }
+                    }).result.then(function() {
+                        $state.go('home', null, { reload: true });
+                    }, function() {
+                        $state.go('home');
+                    });
+                }]
+            })
+
+
         .state('evaluar.delete', {
             parent: 'evaluar',
             url: '/{id}/delete',

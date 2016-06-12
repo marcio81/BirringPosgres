@@ -51,6 +51,7 @@
                     $translatePartialLoader.addPart('precio');
                     $translatePartialLoader.addPart('ubicacion');
                     $translatePartialLoader.addPart('comentario');
+                    $translatePartialLoader.addPart('evaluar');
                     return $translate.refresh();
                 }],
                 entity: ['$stateParams', 'Cervesa', function($stateParams, Cervesa) {
@@ -222,6 +223,29 @@
             .state('precioId', {
                 parent: 'app',
                 url: '/precioId/{id}',
+                data: {
+                    authorities: ['ROLE_USER']
+                },
+                views: {
+                    'content@': {
+                        templateUrl: 'app/entities/cervesa/cervesa-detail.html',
+                        controller: 'CervesaDetailController',
+                        controllerAs: 'vm'
+                    }
+                },
+                resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('cervesa');
+                        $translatePartialLoader.addPart('global');
+                        return $translate.refresh();
+                    }]
+
+                }
+            })
+            // Evaluar media en perfil
+            .state('evaluarId', {
+                parent: 'app',
+                url: '/evaluarId/{id}',
                 data: {
                     authorities: ['ROLE_USER']
                 },

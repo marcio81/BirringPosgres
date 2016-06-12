@@ -3,6 +3,7 @@
 
 <nav class="navbar navbar-default navBarNew" role="navigation">
     <div class="container">
+
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" ng-click="vm.navCollapsed = !vm.navCollapsed">
                 <span class="sr-only">Toggle navigation</span>
@@ -15,8 +16,9 @@
 
         <!-- MOSTRAR  ADMIN EXCEPTO ACCOUNT Y HOME LI-->
         <div class="collapse navbar-collapse" id="navbar-collapse" uib-collapse="vm.navCollapsed" ng-switch="vm.isAuthenticated()">
+ <span> <img class='icono'  src="../content/images/icono.png" alt="" />
             <ul class="nav navbar-nav navbar-right">
-                <li><span> <img class='icono'  src="../content/images/icono.png" alt="" /></span></li>
+
                 <li ui-sref-active="active">
                     <a ui-sref="busca" ng-click="vm.navCollapsed = true">
                         <span class="glyphicon glyphicon-search"></span>

@@ -7,18 +7,6 @@
             <td>Valoración</td>
         </tr>
         </thead>
-        <!--<tbody ng-repeat="obj in vm.topCervesas">
-        <tr ng-repeat="cervesa in obj">
-            &lt;!&ndash;<td><img ng-src="cervesa[3]" /></td>&ndash;&gt;
-            <a ui-sref="cervesa-detail({id:cervesa.id})">
-            <td> <img data-ng-src="{{'data:image/*;base64,' + cervesa[3]}}" style="max-height: 30px;" ng-if="cervesa[3]"/>
-                {{byteSize(cervesa[3])}}</td>
-                &lt;!&ndash;{{byteSize({{cervesa[3]}})}}</td>&ndash;&gt;
-            <td>{{cervesa[2]}}</td>
-            <td>{{cervesa[0]}}</td>
-                </a>
-        </tr>
-        </tbody>-->
 
         <tbody>
             <tr ng-repeat="cervesa in vm.topCervesas">
@@ -30,3 +18,18 @@
         </tbody>
     </table>
 </div>
+
+
+
+<!--<tbody ng-repeat="obj in vm.topCervesas">
+       <tr ng-repeat="cervesa in obj">
+           &lt;!&ndash;<td><img ng-src="cervesa[3]" /></td>&ndash;&gt;
+           <a ui-sref="cervesa-detail({id:cervesa.id})">
+           <td> <img data-ng-src="{{'data:image/*;base64,' + cervesa[3]}}" style="max-height: 30px;" ng-if="cervesa[3]"/>
+               {{byteSize(cervesa[3])}}</td>
+               &lt;!&ndash;{{byteSize({{cervesa[3]}})}}</td>&ndash;&gt;
+           <td>{{cervesa[2]}}</td>
+           <td>{{cervesa[0]}}</td>
+               </a>
+       </tr>
+       </tbody>-->

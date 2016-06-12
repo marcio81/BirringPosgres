@@ -39,6 +39,11 @@
                 isArray: true,
                 url:'api/cervesas/:id/ubication'
             },
+            'verEvaluars': {
+                method: 'GET',
+                isArray: true,
+                url:'api/cervesas/:id/evaluar'
+            },
             'consultaBu': {
                 method: 'GET',
                 isArray: true,

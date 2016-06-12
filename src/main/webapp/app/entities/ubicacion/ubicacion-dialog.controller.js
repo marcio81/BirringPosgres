@@ -27,7 +27,19 @@
         }
         NgMap.getMap().then(function(map) {
             vm.map = map;
+
         });
+
+        vm.reRenderMap = function() {
+            $timeout(function(){
+                angular.forEach(vm.maps, function(ubicacion) {
+                    google.maps.event.trigger(ubicacion, 'resize');
+                });
+            }, 200);
+        }
+
+
+
         var onSaveSuccess = function (result) {
             $scope.$emit('jhipsterApp:ubicacionUpdate', result);
             $uibModalInstance.close(result);

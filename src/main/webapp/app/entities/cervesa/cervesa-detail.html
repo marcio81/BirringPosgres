@@ -30,9 +30,16 @@
         <dd>
             <span>{{vm.cervesa.graduacion}}<span>
         </dd>
-
+        <hr>
+        <dt><span translate="jhipsterApp.cervesa.evaluar">Valoracion</dt></dt>
+        <dd ng-repeat="ev in vm.cervezaEvaluars">
+        <span>{{ev.evaluacion}}</span>
+        </dd>
         <hr>
     </dl>
+
+
+
     <ng-map default-style="true" zoom="13" center="[41.3857205, 2.1672644999999875]">
         <marker id="{{shop.id}}" position="[{{shop.latitud}},{{shop.longitud}}]"
             ng-repeat="shop in vm.cervezaUbication" on-click="vm.showDetail(shop)"></marker>
@@ -47,33 +54,7 @@
                 </div>
             </info-window>
 
-        <!-- En content/carousel.css se especifica el estilo del custom marker -->
-        <!--<custom-marker id="foo" position="[{{p.latitud}},{{p.longitud}}]" on-click="vm.closeCustomMarker()">-->
 
-
-            <!-- Para solucionar el problema de que automaticamente se muestra la informacion si
-            existe vm.uName creado en el controlador elimino el div por defecto para mostrar informacion -->
-
-            <!--<div>
-            Nombre:
-            <div ng-if="vm.uName">{{vm.uName}}</div>
-            <div ng-hide="vm.uName">{{p.ubiName}}</div>
-            </div></br>
-
-            <div>
-            Dirección:
-            <div ng-if="vm.uName">{{vm.uDirec}}</div>
-            <div ng-hide="vm.uName">{{p.direccion}}</div>
-            </div>-->
-
-           <!-- <div ng-hide="vm.uName">
-            Nombre: {{p.ubiName}}</br>
-            Dirección: {{p.direccion}}</br>
-            </div>-->
-
-
-
-        <!--</custom-marker>-->
 
     </ng-map>
     <div ng-repeat="prec in vm.cervezaPrecioMedio" ng-if="prec">El precio medio de la cerveza es : {{prec}}</div>
@@ -111,4 +92,38 @@
                         Create new Ubicacion
                     </span>
     </button>
+    <!-- Añadir una evaluacion a la cerveza seleccionada -->
+    <button class="btn btn-primary" ui-sref="nuevaevaluar({idCerveza:vm.cervesa.id})" >
+        <span class="glyphicon glyphicon-plus"></span>
+                    <span  translate="jhipsterApp.evaluar.home.createLabel">
+                        Create new Evaluar
+                    </span>
+    </button>
 </div>
+<!-- En content/carousel.css se especifica el estilo del custom marker -->
+<!--<custom-marker id="foo" position="[{{p.latitud}},{{p.longitud}}]" on-click="vm.closeCustomMarker()">-->
+
+
+<!-- Para solucionar el problema de que automaticamente se muestra la informacion si
+existe vm.uName creado en el controlador elimino el div por defecto para mostrar informacion -->
+
+<!--<div>
+Nombre:
+<div ng-if="vm.uName">{{vm.uName}}</div>
+<div ng-hide="vm.uName">{{p.ubiName}}</div>
+</div></br>
+
+<div>
+Dirección:
+<div ng-if="vm.uName">{{vm.uDirec}}</div>
+<div ng-hide="vm.uName">{{p.direccion}}</div>
+</div>-->
+
+<!-- <div ng-hide="vm.uName">
+ Nombre: {{p.ubiName}}</br>
+ Dirección: {{p.direccion}}</br>
+ </div>-->
+
+
+
+<!--</custom-marker>-->
