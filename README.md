@@ -4,6 +4,20 @@ This application was generated using JHipster, you can find documentation and he
 
 ## Development
 
+Poner en funcionamiento el proyecto:
+Este apartado lo añadiremos a nuestro proyecto en un fichero Readme para que no sea necesario mirar esta documentación puesto que generalmente ese fichero es el que te indica cómo poner en marcha el proyecto.
+Antes que nada deberemos instalar JHipster y para ello necesitamos instalar varias tecnologías que permitan el correcto funcionamiento de JHipster en su propia web explican paso a paso las instalaciones necesarias, en nuestra bibliografía podréis encontrar el link.
+Si a alguien le interesase poner en funcionamiento el proyecto en casa nosotros facilitamos los pasos que debería de seguir desde el entorno de desarrollo IntelliJ IDEA.
+ File->New->Project from Version Control -> GitHub
+ En la URL del Repositorio Git pegamos: https://github.com/marcio81/BirringPosgres.git
+ Una vez nos cargue todos los archivos tendremos que configurar la base de datos para vincularla al proyecto, en nuestro caso utilizamos PostgreSQL y creemos que sería de utilidad mencionar que no se puede acceder a la base de datos con el usuario por defecto que te proporciona PostgreSQL, sino que se tendrá que crear uno especialmente para nuestra base de datos, el nombre de la base de datos podremos encontrarlo en la carpeta del proyecto/src/main/resources/config en el archivo application-dev.yml dentro del datasource hay una línea de código que empieza por "url:", la última palabra de esa línea será el nombre de la base de datos.
+9
+ Será necesario otra key para la utilización de la API de Google Maps, para incluirla deberá de cambiar el script en el índex.
+ Después de la configuración de la base de datos en caso de que el usuario quiera poner en marcha el registro con validación por email deberá modificar el archivo application-dev.yml, en concreto las líneas "username" y "password" dentro de "mail".
+ Después ya se podrá ejecutar el proyecto y si todo funciona correctamente nos mostrará un link para acceder a la aplicación.
+
+
+
 Before you can build this project, you must install and configure the following dependencies on your machine:
 1.Java 
   sudo echo oracle-java-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections
