@@ -31,9 +31,14 @@
             <span>{{vm.cervesa.graduacion}}<span>
         </dd>
         <hr>
-        <dt><span translate="jhipsterApp.cervesa.evaluar">Valoracion</dt></dt>
-        <dd ng-repeat="ev in vm.cervezaEvaluars" ng-if="ev">
-        <span>{{ev.evaluacion}}</span>
+        <dt><span translate="jhipsterApp.cervesa.precio">Precio medio</dt></dt>
+        <dd ng-repeat="prec in vm.cervezaPrecioMedio">
+            <span>{{prec}}<span>
+        </dd>
+        <hr>
+        <dt><span translate="jhipsterApp.cervesa.evaluar">Evaluacion media</dt></dt>
+        <dd ng-repeat="eva in vm.cervezaEvaluars" ng-if="eva">
+        <span>{{eva}}</span>
         </dd>
         <hr>
     </dl>
@@ -57,8 +62,12 @@
 
 
     </ng-map>
-    <div ng-repeat="prec in vm.cervezaPrecioMedio" ng-if="prec">El precio medio de la cerveza es : {{prec}}</div>
-    <!--<div>{{vm.cervezaPrecioMedio}}</div>-->
+    <div ng-repeat="prec in vm.cervezaPrecioMedio" ng-hide="prec == null">El precio medio de la cerveza es : {{prec}}</div>
+    <div ng-repeat="eva in vm.cervezaEvaluars" ng-hide="eva == null">La evaluación media de la cerveza es : {{eva}}</div>
+
+  <!--  <div ng-model="vm.cervezaPrecioMedio" ng-hide="vm.cervezaPrecioMedio == null">El precio medio de la cerveza es : {{vm.cervezaPrecioMedio}}</div>
+    <div ng-model="vm.cervezaEvaluars" ng-hide="vm.cervezaEvaluars == null">La evaluación media de la cerveza es : {{vm.cervezaEvaluars}}</div>
+-->
 <table>
     <tr ng-repeat="coment in vm.cervezaComentarios">
         <td>{{coment.user.id}}</td>

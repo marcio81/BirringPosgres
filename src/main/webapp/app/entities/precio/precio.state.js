@@ -147,14 +147,6 @@
                         backdrop: 'static',
                         size: 'lg',
                         resolve: {
-                            /*entity: function () {
-                                return {
-                                    precio: null,
-                                    id: null,
-                                    cervesa: $stateParams.idCerveza
-                                   // cervesa: Cervesa.get({id : $stateParams.idCerveza})
-                                };
-                            }*/
                             translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                                 $translatePartialLoader.addPart('precio');
                                 return $translate.refresh();
