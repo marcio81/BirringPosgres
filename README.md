@@ -5,8 +5,16 @@ This application was generated using JHipster, you can find documentation and he
 ## Development
 
 Before you can build this project, you must install and configure the following dependencies on your machine:
-
-1. [Node.js][]: We use Node to run a development web server and build the project.
+1.Java 
+  sudo echo oracle-java-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections
+  sudo apt-get install -y --force-yes oracle-java8-installer
+  sudo update-java-alternatives -s java-8-oracle
+  
+ 2. GIT: We use GIT to download the source code.
+ 
+   sudo apt-get install git
+ 
+3. [Node.js][]: We use Node to run a development web server and build the project.
    Depending on your system, you can install Node either from source or as a pre-packaged bundle.
 
 After installing Node, you should be able to run the following command to install development tools (like

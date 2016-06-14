@@ -32,7 +32,7 @@
         </dd>
         <hr>
         <dt><span translate="jhipsterApp.cervesa.evaluar">Valoracion</dt></dt>
-        <dd ng-repeat="ev in vm.cervezaEvaluars">
+        <dd ng-repeat="ev in vm.cervezaEvaluars" ng-if="ev">
         <span>{{ev.evaluacion}}</span>
         </dd>
         <hr>

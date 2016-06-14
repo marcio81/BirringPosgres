@@ -51,8 +51,8 @@
         };
 
 
-        
-        
+
+
         vm.getBuCervesas = function () {
             Cervesa.consultaBu({consultaBu: vm.buCervesas}, function (response) {
 
@@ -60,7 +60,7 @@
 
             });
         };
-       
+
 
         vm.filtrarPor = function (filtro) {
             vm.filtracion = filtro;
