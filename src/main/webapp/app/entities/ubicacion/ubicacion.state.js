@@ -144,7 +144,7 @@
 
             .state('nuevaubicacion', {
                 parent: 'home',
-                url: '/{idCerveza}/newUbicacion',
+                url: '/newUbicacion',
                 data: {
                     authorities: ['ROLE_USER']
                 },
@@ -160,7 +160,7 @@
                                 $translatePartialLoader.addPart('ubicacion');
                                 return $translate.refresh();
                             }],
-                        /*    entity: function () {
+                            entity: function () {
                                 return {
                                     ubiName: null,
                                     direccion: null,
@@ -168,20 +168,24 @@
                                     latitud: null,
                                     id: null
                                 };
-                            }*/
-                            entity: ['Cervesa', function(Cervesa) {
+                            }/*,
+                            cervesas:['Cervesa', function(Cervesa) {
+                                return Cervesa.get({id : $stateParams.idCerveza});
+                            }]*/
+                            /*entity: ['Cervesa', function(Cervesa) {
                                 return {
                                     ubiName: null,
                                     direccion: null,
                                     longitud: null,
                                     latitud: null,
                                     id: null,
-                                    cervesa: Cervesa.get({id : $stateParams.idCerveza})
+                                    // cervesas: Cervesa.get({id : $stateParams.idCerveza})
+                                    cervesas: $stateParams.idCerveza
                                 };
-                            }]
+                            }]*/
                         }
-                    }).result.then(function() {
-                        $state.go('home', null, { reload: true });
+                    }).result.then(function(data) {
+                        $state.go("nuevoprecio",{idUbicacion:data.id});
                     }, function() {
                         $state.go('home');
                     });
