@@ -2,10 +2,10 @@
     "jhipsterApp": {
         "cervesa" : {
             "home": {
-                "title": "Cervesas",
-                "createLabel": "Crear nuevo Cervesa",
-                "createOrEditLabel": "Crear o editar Cervesa",
-                "search": "Search for Cervesa"
+                "title": "Cervezas",
+                "createLabel": "Crear nuevo Cerveza",
+                "createOrEditLabel": "Crear o editar Cerveza",
+                "search": "Search for Cerveza"
             },
             "created": "Un nuevo Cervesa ha sido creado con el identificador {{ param }}",
             "updated": "Un Cervesa ha sido actualizado con el identificador {{ param }}",
@@ -16,7 +16,7 @@
             "detail": {
                 "title": "Cervesa"
             },
-            "cervesaName": "CervesaName",
+            "cervesaName": "Nombre",
             "tipo": "Tipo",
             "fabricante": "Fabricante",
             "pais": "Pais",
