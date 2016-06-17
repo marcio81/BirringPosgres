@@ -379,3 +379,11 @@ img:nth-child(3) {
 img:nth-child(4) {
     animation-delay: 0s;
 }
+
+.container{
+    width: 60%;
+}
+
+#field_evaluacion{
+    display:inline;
+}

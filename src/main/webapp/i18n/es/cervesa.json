@@ -7,14 +7,14 @@
                 "createOrEditLabel": "Crear o editar Cerveza",
                 "search": "Search for Cerveza"
             },
-            "created": "Un nuevo Cervesa ha sido creado con el identificador {{ param }}",
-            "updated": "Un Cervesa ha sido actualizado con el identificador {{ param }}",
-            "deleted": "Un Cervesa ha sido eliminado con el identificador {{ param }}",
+            "created": "Un nuevo Cerveza ha sido creado con el identificador {{ param }}",
+            "updated": "Un Cerveza ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Cerveza ha sido eliminado con el identificador {{ param }}",
             "delete": {
                 "question": "¿Seguro que quiere eliminar Cervesa {{ id }}?"
             },
             "detail": {
-                "title": "Cervesa"
+                "title": "Cerveza"
             },
             "cervesaName": "Nombre",
             "tipo": "Tipo",

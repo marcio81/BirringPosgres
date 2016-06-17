@@ -14,6 +14,7 @@
                     vm.evaluars = Evaluar.query();
                     vm.comentarios = Comentario.query();
                     vm.ubicacions = Ubicacion.query();
+               
                     vm.load = function(id) {
                             Cervesa.get({id : id}, function(result) {
                                     vm.cervesa = result;
