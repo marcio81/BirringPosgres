@@ -16,7 +16,7 @@
         <div class="form-group">
             <label class="control-label" translate="jhipsterApp.ubicacion.ubiName" for="field_ubiName">UbiName</label>
             <input type="text" class="form-control" name="ubiName" id="field_ubiName"
-                   ng-model="vm.ubicacion.ubiName"
+                   ng-model="vm.ubicacion.ubiName" required
             />
         </div>
 <!--
@@ -42,7 +42,7 @@
 -->
         <div class="form-group">
             <label translate="jhipsterApp.ubicacion.cervesa" for="field_cervesa">cervesa</label>
-            <select class="form-control" id="field_cervesa" multiple name="cervesa" ng-model="vm.ubicacion.cervesas" ng-options="cervesa as cervesa.cervesaName for cervesa in vm.cervesas track by cervesa.id"></select>
+            <select class="form-control" id="field_cervesa" multiple name="cervesa" ng-model="vm.ubicacion.cervesas" ng-options="cervesa as cervesa.cervesaName for cervesa in vm.cervesas track by cervesa.id" ></select>
         </div>
 
  <!--       <div class="form-group">
@@ -67,7 +67,7 @@
 
                class="form-control" name="direccion"
 
-               on-place-changed="vm.placeChanged()" /> <br/>
+               on-place-changed="vm.placeChanged()" required/> <br/>
         <div ng-show="vm.place" class="allMapa">
             Address = {{vm.place.formatted_address}} <br/>
             Location: {{vm.place.geometry.location}}<br/>
