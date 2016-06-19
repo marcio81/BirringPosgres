@@ -68,13 +68,14 @@
                class="form-control" name="direccion"
 
                on-place-changed="vm.placeChanged()" required/> <br/>
-        <div ng-show="vm.place" class="allMapa">
+       <!-- <div ng-show="vm.place" class="allMapa">
             Address = {{vm.place.formatted_address}} <br/>
             Location: {{vm.place.geometry.location}}<br/>
-            <!--1: {{vm.ubicacion.latitud}}<br/>
-            2: {{vm.ubicacion.longitud}}<br/>-->
+            1: {{vm.ubicacion.latitud}}<br/>
+            2: {{vm.ubicacion.longitud}}<br/>
         </div>
-        address : {{vm.ubicacion.direccion}}
+        address : {{vm.ubicacion.direccion}}-->
+
 <!-- {"lat":41.38506389999999,"lng":2.1734034999999494} -->
         <ng-map default-style="true" zoom="13" center="[41.3857205, 2.1672644999999875]">
             <marker position="{{vm.ubicacion.direccion}}"></marker>

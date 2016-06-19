@@ -32,6 +32,10 @@ public interface UbicacionRepository extends JpaRepository<Ubicacion,Long> {
     @Query("select distinct u from Ubicacion u JOIN u.cervesas p  where p.id=:id")
     List<Ubicacion> findUbicacionesID(@Param("id") Long id);
 
+    //El cervesas hace referencia al mappedBy
+    @Query("select distinct u , a from Ubicacion u, Precio a JOIN u.cervesas p  where p.id=:id and a.ubicacion.id=u.id")
+    List<Object[]> findUbicaciones2(@Param("id") Long id);
+
 
 
 }

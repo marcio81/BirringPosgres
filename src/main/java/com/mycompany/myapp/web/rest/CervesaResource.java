@@ -8,6 +8,7 @@ import com.mycompany.myapp.domain.Ubicacion;
 import com.mycompany.myapp.domain.Evaluar;
 import com.mycompany.myapp.repository.*;
 import com.mycompany.myapp.web.rest.dto.CervezaDTO;
+import com.mycompany.myapp.web.rest.dto.UbicacionDTO;
 import com.mycompany.myapp.web.rest.util.HeaderUtil;
 import com.mycompany.myapp.web.rest.util.PaginationUtil;
 import org.slf4j.Logger;
@@ -175,6 +176,31 @@ public class CervesaResource {
         return new ResponseEntity<>(cervezaDTOs, headers, HttpStatus.OK);
     }
 
+    // Ubicaciones de la cerveza
+    @RequestMapping(value = "/cervesas/{id}/ubication",
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public ResponseEntity<List<UbicacionDTO>> getUbicacionesIDCerveza(@PathVariable Long id)
+        throws URISyntaxException {
+        log.debug("REST request to get Comentario: {}", id);
+
+        List<Object[]> ubic = ubicacionRepository.findUbicaciones2(id);
+
+        List<UbicacionDTO> ubicacionDTOs = new ArrayList<>();
+
+        ubic.
+            forEach(ubicacion -> ubicacionDTOs.add(new UbicacionDTO((Ubicacion) ubicacion[0],(Precio) ubicacion[1])));
+           //forEach(ubicacion -> ubicacionDTOs.add(new UbicacionDTO((Long) ubicacion[0],(String) ubicacion[1],(String) ubicacion[2],(Float) ubicacion[3],(Float) ubicacion[4],(Double) ubicacion[1])));
+
+        //getContent()      Long id, String ubiName, String direccion, Float longitud, Float latitud, Double precio
+           // .forEach(cerveza -> cervezaDTOs.add(new CervezaDTO((Long) cerveza[0], (String) cerveza[1], (byte[]) cerveza[2], (Double) cerveza[3])));
+
+
+
+        return new ResponseEntity<>(ubicacionDTOs, HttpStatus.OK);
+    }
+
 // BUSCADOR
     @RequestMapping(value = "/buscacervesas/{cervesaName}",
         method = RequestMethod.GET,
@@ -215,7 +241,7 @@ public class CervesaResource {
     }
 
     // Ubicaciones de la cerveza
-    @RequestMapping(value = "/cervesas/{id}/ubication",
+   /* @RequestMapping(value = "/cervesas/{id}/ubication",
         method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
@@ -225,7 +251,7 @@ public class CervesaResource {
         List<Ubicacion> ubic = ubicacionRepository.findUbicacionesID(id);
 
         return new ResponseEntity<>(ubic, HttpStatus.OK);
-    }
+    }*/
     // Evaluaciones de la cerveza
     @RequestMapping(value = "/cervesas/{id}/evaluar",
         method = RequestMethod.GET,

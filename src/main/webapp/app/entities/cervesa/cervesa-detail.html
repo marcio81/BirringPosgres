@@ -3,7 +3,7 @@
     <div class="imagemPerfil"><img data-ng-src="{{'data:image/*;base64,' + vm.cervesa.foto}}" style="max-height: 100%;" ng-if="vm.cervesa.foto"/>
         {{byteSize(vm.cervesa.foto)}}</a></div>
 
-    <hr>
+    <!--<hr>-->
     <dl class="dl-horizontal">
         <hr>
         <dt><span>Cerveza</dt></dt>
@@ -56,14 +56,13 @@
                     <!--id: {{vm.shop.id}}<br/>-->
                     Nombre: {{vm.shop.ubiName}}<br/>
                     Direccion: {{vm.shop.direccion}}<br/>
+                    Precio: {{vm.shop.precio}}<br/>
                 </div>
             </info-window>
 
-
-
     </ng-map>
-    <div ng-repeat="prec in vm.cervezaPrecioMedio" ng-hide="prec == null">El precio medio de la cerveza es : {{prec}}</div>
-    <div ng-repeat="eva in vm.cervezaEvaluars" ng-hide="eva == null">La evaluación media de la cerveza es : {{eva}}</div>
+    <!--<div ng-repeat="prec in vm.cervezaPrecioMedio" ng-hide="prec == null">El precio medio de la cerveza es : {{prec}}</div>
+    <div ng-repeat="eva in vm.cervezaEvaluars" ng-hide="eva == null">La evaluación media de la cerveza es : {{eva}}</div>-->
 
   <!--  <div ng-model="vm.cervezaPrecioMedio" ng-hide="vm.cervezaPrecioMedio == null">El precio medio de la cerveza es : {{vm.cervezaPrecioMedio}}</div>
     <div ng-model="vm.cervezaEvaluars" ng-hide="vm.cervezaEvaluars == null">La evaluación media de la cerveza es : {{vm.cervezaEvaluars}}</div>
@@ -88,7 +87,7 @@
                     </span>
     </button>
     <!-- Añadir un precio a la cerveza seleccionada -->
-    <button class="btn btn-primary" ui-sref="nuevoprecio({idCerveza:vm.cervesa.id})" >
+    <button class="btn btn-primary" ui-sref="nuevoprecioperfil({idCerveza:vm.cervesa.id})" >
         <span class="glyphicon glyphicon-plus"></span>
                     <span  translate="jhipsterApp.precio.home.createLabel">
                         Create new Precio

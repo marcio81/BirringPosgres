@@ -64,7 +64,7 @@
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
                     templateUrl: 'app/entities/precio/precio-dialog.html',
-                    controller: 'PrecioDialogController',
+                    controller: 'PrecioDialogController2',
                     controllerAs: 'vm',
                     backdrop: 'static',
                     size: 'lg',
@@ -132,7 +132,43 @@
                 });
             }]
         })
-            // CREAR PRECIO COGIENDO EL ID DE LA CERVEZA
+            // Crear precio asociado a una cerveza en el perfil de esta
+            .state('nuevoprecioperfil', {
+                parent: 'home',
+                url: '/{idCerveza}/newPrecioCerveza',
+                data: {
+                    authorities: ['ROLE_USER']
+                },
+                onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                    $uibModal.open({
+                        templateUrl: 'app/entities/precio/precio-dialog3.html',
+                        controller: 'PrecioDialogController2',
+                        controllerAs: 'vm',
+                        backdrop: 'static',
+                        size: 'lg',
+                        resolve: {
+                            translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                                $translatePartialLoader.addPart('precio');
+                                return $translate.refresh();
+                            }],
+                            entity: ['Cervesa', function(Cervesa) {
+                                return {
+                                    precio: null,
+                                    id: null,
+                                    //cervesa: $stateParams.idCerveza
+                                    cervesa: Cervesa.get({id : $stateParams.idCerveza})
+                                };
+                            }]
+
+                        }
+                    }).result.then(function() {
+                        $state.go('home', null, { reload: true });
+                    }, function() {
+                        $state.go('home');
+                    });
+                }]
+            })
+            // CREAR PRECIO DESPUES DE LA UBICACION
             .state('nuevoprecio', {
                 parent: 'home',
                 url: '/{idCerveza}/{idUbicacion}/newPrecio',
