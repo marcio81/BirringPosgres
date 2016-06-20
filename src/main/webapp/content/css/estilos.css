@@ -178,6 +178,7 @@ ul.rating {
     padding-right: 50px;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 40px;
 }
 #scale:hover {
     -webkit-transform: scale(1.5, 1.5);
