@@ -1,8 +1,17 @@
-Cervezas:
-<input type="text" ng-model="buCervesas" ng-change="getBuCervesas()"/>
+<form class="form-wrapper">
+<input type="text" id="search" placeholder="Busca tu cerveza..." ng-model="buCervesas" ng-change="getBuCervesas() "/>
+</form>
+<div class="table-users" >
+    <div class="busq">
+        <div id="buscaD" ng-repeat="cervesa in vm.cervesas | filter:buCervesas | orderBy:filtracion">
+        <div class="imagemPerfil"><a ui-sref="cervesa-detail({id:cervesa.id})"><img data-ng-src="{{'data:image/*;base64,' + cervesa.foto}}" ng-if="cervesa.foto"/>
+            {{byteSize(cervesa.foto)}}</a></div>
+        <h2 style="text-align: center"><a ui-sref="cervesa-detail({id:cervesa.id})">{{cervesa.cervesaName}}</a></h2>
 
-<div class="table-users">
-    <table cellspacing="0" class="table table-striped">
+        <p style="text-align: center">{{cervesa.tipo}}</p>
+</div>
+    </div><!-- /.col-lg-4 -->
+   <!-- <table cellspacing="0" class="table table-striped">
         <thead>
 
         <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.reset()">
@@ -20,5 +29,5 @@ Cervezas:
             <td>{{cervesa.tipo}}</td>
         </tr>
         </tbody>
-    </table>
+    </table>-->
 </div>

@@ -11,7 +11,7 @@
         var vm = this;
 
         ubicacion.$promise.then(function (data) {
-            vm.ubicacion=data;
+          vm.ubicacion=data;
         })
 
         vm.precio = entity;
