@@ -61,36 +61,33 @@
             </info-window>
 
     </ng-map>
+    </br>
+    <br/>
     <!--<div ng-repeat="prec in vm.cervezaPrecioMedio" ng-hide="prec == null">El precio medio de la cerveza es : {{prec}}</div>
     <div ng-repeat="eva in vm.cervezaEvaluars" ng-hide="eva == null">La evaluación media de la cerveza es : {{eva}}</div>-->
 
   <!--  <div ng-model="vm.cervezaPrecioMedio" ng-hide="vm.cervezaPrecioMedio == null">El precio medio de la cerveza es : {{vm.cervezaPrecioMedio}}</div>
     <div ng-model="vm.cervezaEvaluars" ng-hide="vm.cervezaEvaluars == null">La evaluación media de la cerveza es : {{vm.cervezaEvaluars}}</div>
 -->
-<table>
-    <tr ng-repeat="coment in vm.cervezaComentarios">
-        <td>{{coment.user.id}}</td>
-        <td>{{coment.comentario}}</td>
-    </tr>
-</table>
 
-    <button type="submit"
+
+   <!-- <button type="submit"
             onclick="window.history.back()"
             class="btn btn-info">
         <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
-    </button>
+    </button>-->
     <!-- Añadir un comentario a la cerveza seleccionada , idUser:vm.user.id -->
-    <button class="btn btn-primary" ui-sref="nuevocomentario({idCerveza:vm.cervesa.id})" >
+    <button class="btn btn-warning" ui-sref="nuevocomentario({idCerveza:vm.cervesa.id})" >
         <span class="glyphicon glyphicon-plus"></span>
                     <span  translate="jhipsterApp.comentario.home.createLabel">
                         Nuevo Comentario
                     </span>
     </button>
     <!-- Añadir un precio a la cerveza seleccionada -->
-    <button class="btn btn-primary" ui-sref="nuevoprecioperfil({idCerveza:vm.cervesa.id})" >
+    <button class="btn btn-warning" ui-sref="nuevoprecioperfil({idCerveza:vm.cervesa.id})" >
         <span class="glyphicon glyphicon-plus"></span>
                     <span  translate="jhipsterApp.precio.home.createLabel">
-                        Create new Precio
+                        Añadir Precio
                     </span>
     </button>
     <!-- Añadir una ubicacion a la cerveza seleccionada -->
@@ -101,12 +98,43 @@
                     </span>
     </button>-->
     <!-- Añadir una evaluacion a la cerveza seleccionada -->
-    <button class="btn btn-primary" ui-sref="nuevaevaluar({idCerveza:vm.cervesa.id})" >
+    <button class="btn btn-warning" ui-sref="nuevaevaluar({idCerveza:vm.cervesa.id})" >
         <span class="glyphicon glyphicon-plus"></span>
                     <span  translate="jhipsterApp.evaluar.home.createLabel">
-                        Create new Evaluar
+                         Evaluar
                     </span>
     </button>
+    </br>
+    <br/>
+
+    <h3>Comentarios</h3>
+
+    <div class="dialogbox" ng-repeat="coment in vm.cervezaComentarios">
+        <div class="boddy">
+            <span class="tip tip-left"></span>
+            <div class="usuario">
+                <span>{{coment.user.login}}</span>
+            </div>
+            <div class="message">
+                <span>{{coment.comentario}}</span>
+            </div>
+        </div>
+    </div>
+
+
+        <!--<div ng-repeat="coment in vm.cervezaComentarios">
+            <div class="nameC">{{coment.user.login}}</div>
+            <div class="commentC">{{coment.comentario}}</div>
+        </div>
+-->
+
+    <!--<table>
+        <tr ng-repeat="coment in vm.cervezaComentarios">
+            <td>{{coment.user.login}}</td>
+            <td>{{coment.comentario}}</td>
+        </tr>
+    </table>-->
+
 </div>
 <!-- En content/carousel.css se especifica el estilo del custom marker -->
 <!--<custom-marker id="foo" position="[{{p.latitud}},{{p.longitud}}]" on-click="vm.closeCustomMarker()">-->
