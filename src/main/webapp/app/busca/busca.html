@@ -4,7 +4,7 @@
 <div class="table-users" >
     <div class="busq">
         <div id="buscaD" ng-repeat="cervesa in vm.cervesas | filter:buCervesas | orderBy:filtracion">
-        <div class="imagemPerfil"><a ui-sref="cervesa-detail({id:cervesa.id})"><img data-ng-src="{{'data:image/*;base64,' + cervesa.foto}}" ng-if="cervesa.foto"/>
+        <div class="imagemPerfil" id="scale"><a ui-sref="cervesa-detail({id:cervesa.id})"><img data-ng-src="{{'data:image/*;base64,' + cervesa.foto}}" ng-if="cervesa.foto"/>
             {{byteSize(cervesa.foto)}}</a></div>
         <h2 style="text-align: center"><a ui-sref="cervesa-detail({id:cervesa.id})">{{cervesa.cervesaName}}</a></h2>
 
